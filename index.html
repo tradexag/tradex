@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TradeX International AG · Lars Orlamünde</title>
+<meta name="description" content="Lars Orlamünde, TradeX International AG: Marketplace Operations, E-Commerce-Strategie und Software Engineering. Ich entwickle, optimiere, analysiere und automatisiere Ihren Marktplatz-Handel.">
+<link rel="canonical" href="https://tradexag.ch/">
+<meta name="theme-color" content="#111111">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TradeX International AG">
+<meta property="og:url" content="https://tradexag.ch/">
+<meta property="og:title" content="TradeX International AG · Lars Orlamünde">
+<meta property="og:description" content="Marketplace Operations, E-Commerce-Strategie und Software Engineering aus der Schweiz.">
+<meta property="og:image" content="https://tradexag.ch/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/geist-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"TradeX International AG","url":"https://tradexag.ch/","logo":"https://tradexag.ch/apple-touch-icon.png","email":"lars@tradexag.ch","founder":{"@type":"Person","name":"Lars Orlamünde","jobTitle":"Founder & CEO"}}
+</script>
+<style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/geist-sans-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/geist-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/geist-sans-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/geist-sans-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/geist-sans-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2')}
+/* Layout: 12-column Swiss grid, max 1400px, hairline rules; one dark section (engineering) as the page's turning point. */
+:root{
+  --white:#FFFFFF;
+  --paper:#F8F9FA;
+  --ink:#111111;
+  --graphite:#303030;
+  --line:#E8E8E8;
+  --muted:#6A6E73;
+  --soft:#A4A8AD;
+  --accent:#D52B1E;          /* Swiss red, used only as a signal */
+  --ink-line:#2A2A2A;
+  --ink-muted:#9A9DA1;
+  --font-sans:"Geist","Inter","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"JetBrains Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:1400px;
+  --gutter:clamp(16px,4vw,48px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --header-h:64px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 8px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--font-sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--ink);color:var(--white)}
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.nowrap{white-space:nowrap}
+.sq{display:inline-block;width:8px;height:8px;background:var(--accent);flex:none}
+
+/* ---------- progress + header ---------- */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);z-index:60}
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--header-h)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:22px;height:22px;flex:none}
+.logo-word{font-weight:700;letter-spacing:.06em;font-size:16px;line-height:1}
+.logo-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--muted);line-height:1;margin-top:4px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:clamp(16px,2.2vw,32px);list-style:none;margin:0;padding:0}
+.nav-links a{font-size:14px;color:var(--graphite);position:relative;padding-block:6px;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--ease)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--ink)}
+.nav-cta{display:inline-flex;align-items:center;gap:10px;height:40px;padding-inline:18px;background:var(--ink);color:var(--white);font-size:14px;font-weight:500;border-radius:2px;transition:background .2s}
+.nav-cta:hover{background:var(--graphite)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:var(--white);border-radius:2px;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:1.5px;background:var(--ink);position:relative;transition:transform .3s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink);transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.menu-open .burger span{background:transparent}
+.menu-open .burger span::before{top:0;transform:rotate(45deg)}
+.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;top:calc(var(--header-h) + env(safe-area-inset-top,0px));background:var(--white);z-index:45;padding:32px var(--gutter) calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:4px;border-top:1px solid var(--line)}
+.mobile-menu a{display:flex;justify-content:space-between;align-items:baseline;font-size:32px;font-weight:500;letter-spacing:-.02em;padding-block:12px;border-bottom:1px solid var(--line)}
+.mobile-menu a .mono{color:var(--muted)}
+.mobile-menu .nav-cta{margin-top:24px;height:52px;justify-content:center;font-size:16px;border:0}
+@media (max-width:960px){.nav-links,.nav .nav-cta{display:none}.burger{display:inline-flex}}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:12px;height:52px;padding-inline:24px;font-size:15px;font-weight:500;border-radius:2px;border:1px solid var(--ink);transition:background .25s,color .25s,border-color .25s}
+.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
+.btn-primary{background:var(--ink);color:var(--white)}
+.btn-primary:hover{background:var(--graphite);border-color:var(--graphite)}
+.btn-primary:hover .arr{transform:translateX(4px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-ghost:hover .arr{transform:translateY(3px)}
+
+/* ---------- section scaffolding ---------- */
+section{position:relative}
+.section{padding-block:clamp(88px,12vw,168px)}
+.label{display:flex;align-items:center;gap:12px;color:var(--muted)}
+.label .path{color:var(--soft)}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:end;margin-bottom:clamp(48px,7vw,96px)}
+.sec-head .label{grid-column:1 / span 3;align-self:start;padding-top:14px}
+.sec-head h2{grid-column:4 / span 9}
+h2{font-size:clamp(38px,5.6vw,84px);line-height:.98;letter-spacing:-.04em;font-weight:600;margin:0;text-wrap:balance}
+h2 .dim{color:var(--soft)}
+h3{margin:0;font-weight:600;letter-spacing:-.02em}
+p{margin:0}
+@media (max-width:820px){
+  .sec-head{grid-template-columns:1fr;gap:20px}
+  .sec-head .label,.sec-head h2{grid-column:1 / -1}
+  .sec-head .label{padding-top:0}
+}
+
+/* ---------- reveal ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.reveal.in{animation:rise .9s var(--ease) both}
+.reveal.in.d1{animation-delay:.08s}.reveal.in.d2{animation-delay:.16s}.reveal.in.d3{animation-delay:.24s}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(40px,7vw,96px);padding-bottom:clamp(64px,8vw,112px);overflow:hidden}
+.gridlines{position:absolute;inset:0;pointer-events:none}
+.gridlines .wrap{height:100%;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.gridlines i{border-left:1px solid var(--line);opacity:.55}
+.gridlines i:last-child{border-right:1px solid var(--line)}
+@media (max-width:820px){.gridlines .wrap{grid-template-columns:repeat(4,minmax(0,1fr))}.gridlines i:nth-child(n+5){display:none}.gridlines i:nth-child(4){border-right:1px solid var(--line)}}
+.hero .wrap{position:relative}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 32px;color:var(--muted);margin-bottom:clamp(32px,5vw,64px)}
+.hero-meta span{display:inline-flex;align-items:center;gap:10px}
+.hero-title{font-size:clamp(40px,8.2vw,124px);line-height:.92;letter-spacing:-.05em;font-weight:600;margin:0;text-transform:uppercase}
+.hero-title span{display:block}
+.hero-title .l1,.hero-title .l2{color:var(--soft)}
+.hero-title .l3{color:var(--ink)}
+.caret{display:inline-block;width:.42em;height:.74em;background:var(--accent);margin-left:.08em;vertical-align:-.02em;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.caret{animation:none}}
+.hero-title .word{display:inline-block}
+.hero-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:clamp(40px,6vw,88px);align-items:start}
+.hero-copy{grid-column:1 / span 5;display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero-sub{font-family:var(--font-mono);font-size:13px;letter-spacing:.02em;color:var(--ink);display:flex;flex-direction:column;gap:6px;padding-left:16px;border-left:1px solid var(--ink)}
+.hero-copy .lead{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--graphite);max-width:34em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.terminal-col{grid-column:7 / span 6;min-width:0}
+@media (max-width:960px){.hero-copy{grid-column:1 / -1}.terminal-col{grid-column:1 / -1}}
+
+/* terminal */
+.terminal{background:var(--ink);color:#E9EAEB;border-radius:4px;font-family:var(--font-mono);font-size:13px;line-height:1.75;box-shadow:0 1px 0 rgba(0,0,0,.04),0 30px 60px -30px rgba(17,17,17,.45);overflow:hidden}
+.term-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ink-line);color:var(--ink-muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.term-bar .dots{display:flex;gap:6px}
+.term-bar .dots i{width:9px;height:9px;border-radius:50%;background:#2E2E2E}
+.term-body{padding:18px 20px 8px;min-height:430px;overflow-x:auto}
+.term-line{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;white-space:nowrap}
+.term-line .tag{color:var(--ink-muted)}
+.term-line > span:nth-child(2){overflow:hidden;text-overflow:ellipsis}
+.term-line .st{color:var(--ink-muted)}
+.term-line .st.ok{color:#E9EAEB}
+.term-line .st.ok::before{content:"✓ ";color:#8FD19E}
+.term-line .st.wait::before{content:"● ";color:var(--accent)}
+.term-cmd{white-space:nowrap;color:#FFFFFF}
+.term-cmd .prompt{color:var(--ink-muted)}
+.term-done{color:var(--ink-muted);margin:4px 0 10px;white-space:nowrap}
+.hero-title .verb{display:inline-block;transition:opacity .26s var(--ease),transform .26s var(--ease)}
+@media (max-width:560px){html[lang="de"] .hero-title .l3{min-height:1.84em}}
+.hero-title .verb.out{opacity:0;transform:translateY(-.18em)}
+.term-svc{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px;white-space:normal}
+.term-svc span{padding:1px 8px;border:1px solid #3A3A3A;border-radius:2px;color:#E9EAEB;font-size:12px;line-height:1.7}
+.term-cursor{display:inline-block;width:8px;height:15px;background:#E9EAEB;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;border-top:1px solid var(--ink-line);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.flow .node{display:flex;align-items:center;gap:8px;padding:14px 16px;color:var(--ink-muted);transition:color .4s}
+.flow .node i{width:6px;height:6px;border-radius:50%;background:#3A3A3A;transition:background .4s,box-shadow .4s;flex:none}
+.flow .node.on{color:#fff}
+.flow .node.on i{background:var(--accent);box-shadow:0 0 0 4px rgba(213,43,30,.18)}
+.flow .node.done{color:#C9CBCE}
+.flow .node.done i{background:#E9EAEB}
+.flow .sep{color:#4A4A4A}
+.term-note{margin-top:12px;color:var(--muted)}
+@media (max-width:560px){
+  .term-body{padding:14px 14px 6px;font-size:12px;min-height:500px}
+  .term-line{grid-template-columns:84px minmax(0,1fr) auto;gap:8px}
+  .flow{font-size:10px}.flow .node{padding:12px 8px;gap:6px}
+}
+
+/* hero index row */
+.hero-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(56px,8vw,104px);border-top:1px solid var(--ink)}
+.hero-index a{display:flex;flex-direction:column;gap:8px;padding:20px 24px 4px 0;transition:color .2s}
+.hero-index a + a{padding-left:24px;border-left:1px solid var(--line)}
+.hero-index .t{font-size:15px;font-weight:500;color:var(--ink);display:flex;justify-content:space-between;gap:12px}
+.hero-index .t .arr{transition:transform .35s var(--ease);color:var(--muted)}
+.hero-index a:hover .arr{transform:translate(3px,3px);color:var(--ink)}
+.hero-index .mono{color:var(--muted)}
+@media (max-width:720px){.hero-index{grid-template-columns:1fr}.hero-index a + a{padding-left:0;border-left:0;border-top:1px solid var(--line)}.hero-index a{padding:16px 0}}
+
+/* ---------- expertise ---------- */
+.expertise{border-top:1px solid var(--line)}
+.disc-list{border-top:1px solid var(--ink)}
+.disc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;padding-block:clamp(28px,3.4vw,44px);border-bottom:1px solid var(--line);position:relative;transition:background .4s}
+.disc::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease)}
+.disc:hover::before{transform:scaleX(1)}
+.disc-idx{grid-column:1 / span 1;color:var(--muted);padding-top:10px}
+.disc h3{grid-column:2 / span 5;font-size:clamp(26px,3vw,44px);line-height:1.05;text-transform:uppercase;letter-spacing:-.035em;transition:transform .5s var(--ease)}
+.disc:hover h3{transform:translateX(8px)}
+.disc-body{grid-column:7 / span 5;display:flex;flex-direction:column;gap:18px;min-width:0;padding-top:6px}
+.disc-body p{color:var(--graphite);max-width:36em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.03em;padding:5px 10px;border:1px solid var(--line);border-radius:2px;color:var(--graphite);background:var(--white);transition:border-color .3s}
+.disc:hover .tags li{border-color:#CFCFCF}
+.disc-arr{grid-column:12 / span 1;justify-self:end;font-size:22px;color:var(--soft);transition:transform .5s var(--ease),color .3s;padding-top:4px}
+.disc:hover .disc-arr{transform:translateX(4px);color:var(--accent)}
+@media (max-width:820px){
+  .disc{grid-template-columns:48px minmax(0,1fr);gap:12px 16px}
+  .disc-idx{grid-column:1;padding-top:6px}
+  .disc h3{grid-column:2}
+  .disc-body{grid-column:2}
+  .disc-arr{display:none}
+}
+
+/* positioning statement */
+.statement{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:clamp(80px,10vw,144px)}
+.statement .label{grid-column:1 / span 3;align-self:start;padding-top:12px}
+.statement-text{grid-column:4 / span 9;font-size:clamp(24px,2.7vw,40px);line-height:1.22;letter-spacing:-.025em;font-weight:500;color:var(--soft);text-wrap:pretty}
+.statement-text strong{color:var(--ink);font-weight:500}
+.brands{grid-column:4 / span 9;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.brands .mono{color:var(--muted)}
+.brands ul{list-style:none;margin:0;padding:12px 0;display:flex;flex-wrap:wrap;gap:6px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.brands li{font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--graphite);white-space:nowrap;padding:4px 18px 4px 0;transition:color .3s}
+.brands li + li{padding-left:18px;border-left:1px solid var(--line)}
+.brands li:hover{color:var(--ink)}
+@media (max-width:820px){.brands{grid-column:1 / -1}}
+.statement-foot{grid-column:4 / span 9;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:24px;margin-top:16px}
+.statement-foot div{display:flex;flex-direction:column;gap:6px}
+.statement-foot .mono{color:var(--muted)}
+.statement-foot p{font-size:15px;color:var(--graphite)}
+@media (max-width:820px){.statement .label,.statement-text,.statement-foot{grid-column:1 / -1}.statement-foot{grid-template-columns:1fr}}
+
+/* ---------- founder ---------- */
+.founder{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.founder-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.portrait-col{grid-column:1 / span 5;position:sticky;top:calc(var(--header-h) + 32px);display:flex;flex-direction:column;gap:0}
+.portrait{position:relative;aspect-ratio:4/5;max-width:100%;background:var(--ink);border:1px solid var(--ink);overflow:hidden}
+.portrait-col{perspective:1400px}
+.portrait{transform-origin:50% 50%;transform:rotateY(var(--ry,0deg)) scale(var(--sc,1));will-change:transform}
+.portrait .shade{position:absolute;inset:0;background:#000;opacity:var(--sh,0);pointer-events:none;z-index:1}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.portrait::after{content:"";position:absolute;left:0;right:0;top:-20%;height:18%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.07) 50%,transparent);animation:sweep 6s linear infinite;pointer-events:none}
+@keyframes sweep{to{top:110%}}
+.portrait .corner{position:absolute;width:16px;height:16px;border-color:rgba(255,255,255,.75);border-style:solid}
+.portrait .c1{top:14px;left:14px;border-width:1px 0 0 1px}.portrait .c2{top:14px;right:14px;border-width:1px 1px 0 0}
+.portrait .c3{bottom:14px;left:14px;border-width:0 0 1px 1px}.portrait .c4{bottom:14px;right:14px;border-width:0 1px 1px 0}
+.portrait .ph{position:absolute;left:24px;right:24px;bottom:26px;display:flex;justify-content:space-between;gap:12px;color:rgba(255,255,255,.8)}
+.portrait .ph-top{position:absolute;left:24px;right:24px;top:26px;display:flex;justify-content:space-between;color:rgba(255,255,255,.8)}
+.portrait .rec{display:inline-flex;align-items:center;gap:8px}
+.portrait .rec i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.portrait::after,.portrait .rec i{animation:none}.portrait::after{display:none}}
+.spec{border-top:1px solid var(--ink);margin-top:24px}
+.spec div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:15px}
+.spec dt{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.spec dd{margin:0;color:var(--ink)}
+.founder-copy{grid-column:7 / span 6;display:flex;flex-direction:column;gap:32px;min-width:0}
+.founder-copy h2{font-size:clamp(36px,4.6vw,72px)}
+.founder-text{display:flex;flex-direction:column;gap:18px;color:var(--graphite);max-width:38em}
+.founder-text p:first-child{font-size:clamp(20px,1.8vw,24px);line-height:1.4;color:var(--ink);letter-spacing:-.01em}
+.quote{margin:16px 0 0;padding:clamp(28px,3vw,40px) 0 0;border-top:1px solid var(--ink);position:relative}
+.quote blockquote{margin:0;font-size:clamp(26px,2.8vw,42px);line-height:1.12;letter-spacing:-.03em;font-weight:500;color:var(--ink);text-wrap:balance}
+.quote blockquote .qm{color:var(--accent)}
+.quote figcaption{margin-top:20px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+@media (max-width:960px){
+  .portrait-col{grid-column:1 / -1;position:static;max-width:520px}
+  .founder-copy{grid-column:1 / -1}
+}
+
+/* ---------- engineering (dark) ---------- */
+.engineering{background:var(--ink);color:var(--white)}
+.engineering .label{color:var(--ink-muted)}
+.engineering .label .path{color:#5E6166}
+.eng-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.eng-copy{grid-column:1 / span 5;display:flex;flex-direction:column;gap:28px;min-width:0}
+.eng-copy h2{color:var(--white);margin-top:8px}
+.eng-copy h2 .dim{color:#5E6166}
+.eng-text{display:flex;flex-direction:column;gap:16px;color:#C3C5C8;max-width:34em}
+.eng-text p:first-child{color:var(--white);font-size:clamp(19px,1.6vw,22px);line-height:1.45}
+.eng-tasks{border-top:1px solid var(--ink-line);margin-top:8px}
+.eng-tasks div{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--ink-line);font-size:15px;color:#E4E5E7}
+.eng-tasks .mono{color:var(--ink-muted)}
+.pipe-col{grid-column:7 / span 6;min-width:0}
+@media (max-width:960px){.eng-copy,.pipe-col{grid-column:1 / -1}.pipe-col{margin-top:24px}}
+
+.pipeline{border:1px solid var(--ink-line);border-radius:4px;background:#161616}
+.pipe-head{display:flex;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--ink-line);color:var(--ink-muted)}
+.pipe-head .live{display:inline-flex;align-items:center;gap:8px}
+.pipe-head .live i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+.pipe-steps{list-style:none;margin:0;padding:12px 20px 12px;position:relative}
+.step{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:16px;align-items:start;padding-block:16px;position:relative}
+.step .rail{position:relative;align-self:stretch;display:flex;justify-content:center}
+.step .rail::before{content:"";position:absolute;top:18px;bottom:-34px;left:50%;width:1px;background:var(--ink-line)}
+.step:last-child .rail::before{display:none}
+.step .rail::after{content:"";position:absolute;top:18px;left:50%;width:1px;height:0;background:var(--white);transition:height .9s var(--ease)}
+.step.done:not(:last-child) .rail::after{height:calc(100% + 16px)}
+.step .dot{position:relative;z-index:1;width:11px;height:11px;margin-top:6px;border-radius:50%;border:1px solid #4A4A4A;background:#161616;transition:background .4s,border-color .4s,box-shadow .4s}
+.step.done .dot{background:var(--white);border-color:var(--white)}
+.step.run .dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 6px rgba(213,43,30,.18)}
+.step.human .dot{border-radius:2px}
+.step .arrow{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);font-family:var(--font-mono);font-size:11px;color:#4A4A4A;background:#161616;line-height:1;padding:2px 0;z-index:1}
+.step:last-child .arrow{display:none}
+.step .name{display:flex;flex-direction:column;gap:4px}
+.step .name .t{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#E4E5E7;transition:color .4s}
+.step .name .d{font-size:14px;color:var(--ink-muted)}
+.step.wait .name .t{color:#7A7D81}
+.chip{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border:1px solid var(--ink-line);border-radius:2px;color:#7A7D81;white-space:nowrap;margin-top:2px;transition:color .3s,border-color .3s,background .3s}
+.step.done .chip{color:#E4E5E7;border-color:#3A3A3A}
+.step.run .chip{color:var(--white);border-color:var(--accent);background:rgba(213,43,30,.12)}
+.step.human{background:linear-gradient(90deg,rgba(255,255,255,.035),transparent 70%);margin-inline:-20px;padding-inline:20px}
+.pipe-foot{display:flex;flex-wrap:wrap;gap:8px 24px;padding:14px 20px;border-top:1px solid var(--ink-line);color:var(--ink-muted)}
+.pipe-foot span{display:inline-flex;align-items:center;gap:8px}
+.pipe-foot i{width:9px;height:9px;border:1px solid var(--ink-muted);display:inline-block}
+.pipe-foot i.round{border-radius:50%}
+@media (max-width:480px){.step{grid-template-columns:20px minmax(0,1fr);gap:12px}.step .chip{grid-column:2;justify-self:start}.pipe-steps{padding-inline:14px}.step.human{margin-inline:-14px;padding-inline:14px}}
+
+/* ---------- stack ---------- */
+.stack-legend{display:flex;flex-wrap:wrap;gap:8px 28px;color:var(--muted);margin-bottom:24px}
+.stack-legend span{display:inline-flex;align-items:center;gap:10px}
+.key{width:10px;height:10px;display:inline-block;flex:none}
+.key.used{background:var(--ink)}
+.key.platform{border:1px solid var(--ink)}
+.stack-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.stack-col{padding:24px 24px 8px 0;min-width:0}
+.stack-col + .stack-col{padding-left:24px;border-left:1px solid var(--line)}
+.stack-col header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.stack-col header h3{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;font-weight:500;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.stack-col header .mono{color:var(--muted);font-variant-numeric:tabular-nums}
+.stack-col ul{list-style:none;margin:0;padding:0}
+.stack-col li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-block:13px;border-bottom:1px solid var(--line);font-size:17px;transition:padding .35s var(--ease)}
+.stack-col li:hover{padding-left:8px}
+.stack-col li .k{font-family:var(--font-mono);font-size:11px;color:var(--soft);letter-spacing:.04em;transition:color .3s}
+.stack-col li:hover .k{color:var(--accent)}
+.stack-note{margin-top:28px;color:var(--muted);font-size:14px;max-width:46em}
+@media (max-width:960px){.stack-grid{grid-template-columns:1fr}.stack-col,.stack-col + .stack-col{padding:24px 0 8px;border-left:0}.stack-col + .stack-col{border-top:1px solid var(--line)}}
+
+/* ---------- aseio ---------- */
+.aseio{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
+.aseio-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center;padding-block:clamp(56px,7vw,96px)}
+.aseio-id{grid-column:1 / span 3;display:flex;flex-direction:column;gap:14px}
+.aseio-id .mono{color:var(--muted);display:flex;align-items:center;gap:10px}
+.aseio-word{font-family:var(--font-mono);font-weight:500;font-size:clamp(36px,4vw,56px);letter-spacing:.06em;line-height:1}
+.aseio-text{grid-column:4 / span 4;color:var(--graphite);font-size:18px;line-height:1.5;min-width:0}
+.aseio-text small{display:block;margin-top:14px;font-size:14px;color:var(--muted)}
+.diff{grid-column:8 / span 5;background:var(--white);border:1px solid var(--line);border-radius:4px;font-family:var(--font-mono);font-size:12.5px;line-height:1.7;min-width:0;overflow:hidden}
+.diff-bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.diff-body{padding:14px 16px;overflow-x:auto}
+.diff-row{display:grid;grid-template-columns:72px 14px minmax(0,1fr);gap:6px;white-space:nowrap}
+.diff-row .f{color:var(--muted)}
+.diff-row.rm .v{color:var(--soft);text-decoration:line-through;text-decoration-color:#C9CBCE}
+.diff-row.rm .s{color:var(--soft)}
+.diff-row.add .s{color:var(--ink)}
+.diff-row .ok{color:var(--accent)}
+@media (max-width:960px){.aseio-id,.aseio-text,.diff{grid-column:1 / -1}}
+
+/* ---------- work with us ---------- */
+.models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.model{display:flex;flex-direction:column;gap:16px;padding-top:24px;border-top:1px solid var(--line);position:relative;min-width:0}
+.model::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s var(--ease)}
+.model:hover::before{transform:scaleX(1)}
+.model .mono{color:var(--muted);display:flex;justify-content:space-between}
+.model h3{font-size:clamp(22px,2vw,28px);line-height:1.1;text-transform:uppercase;letter-spacing:-.025em}
+.model p{color:var(--graphite);max-width:30em}
+.model dl{margin:8px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;font-size:14px;padding-top:16px;border-top:1px dashed var(--line)}
+.model dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.model dd{margin:0;color:var(--ink)}
+@media (max-width:900px){.models{grid-template-columns:1fr;gap:40px}}
+.big-cta{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:clamp(64px,8vw,112px);padding-block:clamp(24px,3vw,40px);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:clamp(30px,5.4vw,80px);font-weight:600;letter-spacing:-.045em;line-height:1;text-transform:uppercase;position:relative;overflow:hidden}
+.big-cta .txt{position:relative;z-index:1;transition:color .45s var(--ease)}
+.big-cta .arr{position:relative;z-index:1;transition:transform .5s var(--ease),color .45s;flex:none}
+.big-cta::before{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--ease)}
+.big-cta:hover::before{transform:scaleY(1)}
+.big-cta:hover .txt,.big-cta:hover .arr{color:var(--white)}
+.big-cta:hover .arr{transform:translateX(-12px)}
+.big-cta:hover .txt{transform:translateX(12px)}
+
+/* ---------- contact ---------- */
+.contact{border-top:1px solid var(--line)}
+.contact h2{font-size:clamp(42px,8vw,124px);line-height:.92;letter-spacing:-.05em;text-transform:uppercase}
+.contact h2 .cw{display:block}
+.contact h2 .rot{display:inline-block;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.contact h2 .rot.out{opacity:0;transform:translateY(-.15em)}
+@media (max-width:560px){html[lang="en"] .contact h2 .cw{min-height:1.84em}}
+.contact-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:clamp(40px,5vw,72px);align-items:start}
+.contact-main{grid-column:1 / span 6;display:flex;flex-direction:column;gap:28px;min-width:0}
+.contact-main p{font-size:clamp(18px,1.5vw,21px);color:var(--graphite);max-width:32em}
+.contact-card{grid-column:8 / span 5;border-top:1px solid var(--ink);min-width:0}
+.contact-card div{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.contact-card dt{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.contact-card dd{margin:0;font-size:17px;overflow-wrap:anywhere}
+.copy{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);background:var(--white);padding:6px 10px;border-radius:2px;color:var(--graphite);transition:border-color .2s}
+.copy:hover{border-color:var(--ink)}
+@media (max-width:900px){.contact-main,.contact-card{grid-column:1 / -1}}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px;margin-top:8px;padding-top:28px;border-top:1px solid var(--line)}
+.form .full{grid-column:1 / -1}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:16px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #CFD1D4;padding:10px 0;border-radius:0;outline:none;transition:border-color .2s;width:100%}
+.field textarea{resize:vertical;min-height:96px}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--ink)}
+.form-note{grid-column:1 / -1;font-family:var(--font-mono);font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:flex-start}
+.form-note.show{color:var(--ink)}
+@media (max-width:560px){.form{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--ink);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
+.footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;color:var(--muted)}
+.footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+.footer a:hover{color:var(--ink)}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal.in{animation:none}
+  *,*::before,*::after{transition-duration:.01ms!important}
+}
+
+/* ---------- goal (inside engineering) ---------- */
+.goal{margin-top:clamp(80px,10vw,144px);padding-top:clamp(48px,6vw,80px);border-top:1px solid var(--ink-line)}
+.goal-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.goal-head .label{grid-column:1 / span 3;align-self:start;padding-top:12px}
+.goal-text{grid-column:4 / span 9;font-size:clamp(24px,2.7vw,40px);line-height:1.22;letter-spacing:-.025em;font-weight:500;color:#6E7176;text-wrap:pretty}
+.goal-text .hi{color:var(--white)}
+.goal-pair{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;margin-top:clamp(40px,5vw,64px)}
+.goal-item{grid-column:span 6;display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:1px solid var(--ink-line);min-width:0}
+.goal-item:first-child{grid-column:4 / span 4}
+.goal-item:last-child{grid-column:9 / span 4}
+.goal-item .mono{color:var(--ink-muted)}
+.goal-item h3{font-size:clamp(20px,1.7vw,24px);line-height:1.2;color:var(--white)}
+.goal-item p{color:#C3C5C8;font-size:15px}
+.goal-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;color:var(--ink-muted)}
+.goal-flow span{padding:4px 8px;border:1px solid var(--ink-line);border-radius:2px}
+.goal-flow .ar{border:0;padding:0;color:#5E6166}
+.goal-flow .em{color:var(--white);border-color:var(--accent)}
+@media (max-width:960px){.goal-head .label,.goal-text{grid-column:1 / -1}.goal-item:first-child,.goal-item:last-child{grid-column:1 / -1}}
+
+/* ---------- language switch ---------- */
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{position:relative}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding-inline:14px;background:var(--white);border:1px solid var(--line);border-radius:2px;font-size:14px;color:var(--ink);transition:border-color .2s}
+.lang-btn:hover,.lang-btn[aria-expanded="true"]{border-color:var(--ink)}
+.lang-btn .chev{font-size:10px;color:var(--muted);transition:transform .3s var(--ease)}
+.lang-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% + 6px);min-width:180px;list-style:none;margin:0;padding:6px;background:var(--white);border:1px solid var(--ink);border-radius:2px;box-shadow:0 18px 40px -20px rgba(17,17,17,.35);z-index:70}
+.lang-menu button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 12px;background:transparent;border:0;border-radius:2px;font-size:15px;text-align:left}
+.lang-menu button:hover{background:var(--paper)}
+.lang-menu button .mono{color:var(--muted)}
+.lang-menu button[aria-selected="true"]{font-weight:600}
+.lang-menu button[aria-selected="true"] .mono{color:var(--accent)}
+html[lang="de"] .hero-title{font-size:clamp(34px,6.7vw,100px)}
+html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
+@media (max-width:420px){.lang-btn{padding-inline:10px}.logo-sub{display:none!important}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header" id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="TradeX International AG">
+      <svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" fill="#111111"/><path d="M6.5 6.5 L15.5 15.5 M15.5 6.5 L6.5 15.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="square"/></svg>
+      <span><span class="logo-word">TRADEX</span><span class="logo-sub" style="display:block">International AG</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#expertise" data-nav>Expertise</a></li>
+      <li><a href="#founder" data-nav data-en="About me">Über mich</a></li>
+      <li><a href="#engineering" data-nav>Engineering</a></li>
+      <li><a href="#stack" data-nav data-en="Stack">Technologie</a></li>
+      <li><a href="#zusammenarbeit" data-nav data-en="Work with me">Zusammenarbeit</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang" id="lang">
+        <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu" aria-label="Sprache wählen" data-en-aria="Choose language"><span id="langCur">Deutsch</span><span class="chev" aria-hidden="true">▼</span></button>
+        <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+          <li><button type="button" role="option" data-lang="de" aria-selected="true">Deutsch <span class="mono">DE</span></button></li>
+          <li><button type="button" role="option" data-lang="en" aria-selected="false">English <span class="mono">EN</span></button></li>
+        </ul>
+      </div>
+      <a href="#kontakt" class="nav-cta"><span data-en="Discuss a project">Projekt besprechen</span> <span aria-hidden="true">→</span></a>
+      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" hidden aria-label="Navigation">
+  <a href="#expertise">Expertise <span class="mono">01</span></a>
+  <a href="#founder"><span data-en="About me">Über mich</span> <span class="mono">02</span></a>
+  <a href="#engineering">Engineering <span class="mono">03</span></a>
+  <a href="#stack"><span data-en="Stack">Technologie</span> <span class="mono">04</span></a>
+  <a href="#zusammenarbeit"><span data-en="Work with me">Zusammenarbeit</span> <span class="mono">05</span></a>
+  <a href="#kontakt" class="nav-cta"><span data-en="Discuss a project">Projekt besprechen</span> →</a>
+</nav>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="gridlines" aria-hidden="true"><div class="wrap"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="wrap">
+    <div class="hero-meta mono">
+      <span><i class="sq"></i>Lars Orlamünde</span>
+      <span>TradeX International AG</span>
+      <span>E-Commerce × Engineering</span>
+      <span>tradexag.ch</span>
+    </div>
+
+    <h1 class="hero-title" aria-label="Ich betreibe E-Commerce nicht nur. Ich entwickle, optimiere, analysiere und automatisiere ihn." data-en-aria="I don't just manage e-commerce. I engineer, optimise, analyse and automate it.">
+      <span class="l1" aria-hidden="true" data-en="I don’t just">Ich betreibe</span>
+      <span class="l2" aria-hidden="true" data-en="manage <span class='nowrap'>e-commerce.</span>"><span class="nowrap">E-Commerce</span> nicht nur.</span>
+      <span class="l3" aria-hidden="true" data-en="I <span class='verb' id='verb'>engineer</span> it.<i class='caret'></i>">Ich <span class="verb" id="verb">entwickle</span> ihn.<i class="caret"></i></span>
+    </h1>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-sub" data-en="<span>Marketplace Operations.</span><span>E-Commerce Strategy.</span><span>Software Engineering.</span>"><span>Marktplatz-Management.</span><span>E-Commerce-Strategie.</span><span>Softwareentwicklung.</span></p>
+        <p class="lead" data-en="I combine hands-on e-commerce experience with my own software development and automation. For companies that want to work more efficiently and grow sustainably.">Ich verbinde operative E-Commerce-Erfahrung mit eigener Softwareentwicklung und Automatisierung. Für Unternehmen, die effizienter arbeiten und nachhaltig wachsen wollen.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#kontakt"><span data-en="Discuss a project">Projekt besprechen</span> <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#expertise"><span data-en="Explore my expertise">Expertise entdecken</span> <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+      <div class="terminal-col">
+        <div class="terminal" role="img" aria-label="Animiertes Terminal: ein Listing-Abgleich läuft durch Daten, Automatisierung und Ausführung, mit menschlicher Freigabe vor der Übermittlung." data-en-aria="Animated terminal: a listing sync runs through data, automation and execution, with human approval before submission.">
+          <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>tradex — console</span><span data-en="example">beispiel</span></div>
+          <div class="term-body" id="termBody"></div>
+          <div class="flow" id="flow">
+            <span class="node" data-stage="0"><i></i><span data-en="Data">Daten</span></span><span class="sep">→</span>
+            <span class="node" data-stage="1"><i></i><span data-en="Automation">Automatisierung</span></span><span class="sep">→</span>
+            <span class="node" data-stage="2"><i></i><span data-en="Execution">Ausführung</span></span>
+          </div>
+        </div>
+        <p class="term-note mono" data-en="Illustrative run · Data → Automation → Execution">Illustrativer Ablauf · Daten → Automatisierung → Ausführung</p>
+      </div>
+    </div>
+
+    <nav class="hero-index" aria-label="Kernkompetenzen" data-en-aria="Core disciplines">
+      <a href="#expertise"><span class="mono" data-en="Operate">Betreiben</span><span class="t"><span data-en="Marketplace Operations">Marktplatz-Management</span> <span class="arr">↘</span></span></a>
+      <a href="#expertise"><span class="mono" data-en="Advise">Beraten</span><span class="t"><span data-en="E-Commerce Strategy">E-Commerce-Strategie</span> <span class="arr">↘</span></span></a>
+      <a href="#engineering"><span class="mono" data-en="Build">Entwickeln</span><span class="t"><span data-en="Software Engineering">Softwareentwicklung</span> <span class="arr">↘</span></span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ================= EXPERTISE ================= -->
+<section class="section expertise" id="expertise">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i>Expertise <span class="path">/expertise</span></div>
+      <h2 class="reveal" data-en="Three disciplines.<br><span class='dim'>One approach.</span>">Drei Disziplinen.<br><span class="dim">Ein Ansatz.</span></h2>
+    </div>
+
+    <div class="disc-list">
+      <article class="disc reveal">
+        <div class="disc-idx mono">01 /</div>
+        <h3 data-en="Marketplace<br>Operations">Marktplatz-<br>Management</h3>
+        <div class="disc-body">
+          <p data-en="Amazon Seller Central, Vendor Central, account health, product data, listings and international marketplaces.">Amazon Seller Central, Vendor Central, Account Health, Produktdaten, Listings und internationale Marktplätze.</p>
+          <ul class="tags"><li>Amazon</li><li>eBay</li><li>OTTO</li><li>Kaufland</li><li>Temu</li><li data-en="+ more platforms">+ weitere Plattformen</li></ul>
+        </div>
+        <div class="disc-arr" aria-hidden="true">→</div>
+      </article>
+      <article class="disc reveal">
+        <div class="disc-idx mono">02 /</div>
+        <h3 data-en="Strategy &amp;<br>Consulting">Strategie &amp;<br>Beratung</h3>
+        <div class="disc-body">
+          <p data-en="Interim Head of E-Commerce, marketplace strategy, internationalisation and hands-on management consulting.">Interim Head of E-Commerce, Marktplatzstrategie, Internationalisierung und operative Unternehmensberatung.</p>
+          <ul class="tags"><li>Interim Management</li><li data-en="Internationalisation">Internationalisierung</li><li data-en="Process optimisation">Prozessoptimierung</li></ul>
+        </div>
+        <div class="disc-arr" aria-hidden="true">→</div>
+      </article>
+      <article class="disc reveal">
+        <div class="disc-idx mono">03 /</div>
+        <h3 data-en="Software &amp;<br>Automation">Software &amp;<br>Automatisierung</h3>
+        <div class="disc-body">
+          <p data-en="Custom software development, API integrations, AI assistants and automated e-commerce processes.">Individuelle Softwareentwicklung, API-Integrationen, KI-Assistenten und automatisierte E-Commerce-Prozesse.</p>
+          <ul class="tags"><li>APIs</li><li data-en="AI assistants">KI-Assistenten</li><li data-en="Databases">Datenbanken</li><li>Workflows</li></ul>
+        </div>
+        <div class="disc-arr" aria-hidden="true">→</div>
+      </article>
+    </div>
+
+    <div class="statement">
+      <div class="label mono"><i class="sq"></i><span data-en="Positioning">Positionierung</span></div>
+      <p class="statement-text reveal" data-en="I don’t see e-commerce only from a consultant’s perspective. <strong>I run e-commerce businesses myself and build the software I use to make processes more efficient.</strong>">Ich verstehe E-Commerce nicht nur aus der Beratungsperspektive. <strong>Ich betreibe selbst E-Commerce-Geschäfte und entwickle die Software, mit der ich Prozesse effizienter gestalte.</strong></p>
+      <div class="brands reveal d1">
+        <span class="mono" data-en="Brands I manage">Betreute Marken</span>
+        <ul>
+          <li>RED LOON</li>
+          <li>VDP</li>
+          <li>KLARBEIT</li>
+          <li>MANUKA.PLUS</li>
+          <li>DIDLO</li>
+          <li>AUWALDBIO</li>
+          <li>BYODO</li>
+        </ul>
+      </div>
+      <div class="statement-foot reveal d1">
+        <div><span class="mono" data-en="I don’t just solve problems.">Ich löse Probleme nicht nur.</span><p data-en="Every recurring task is a candidate for standardisation.">Jede wiederkehrende Aufgabe ist ein Kandidat für Standardisierung.</p></div>
+        <div><span class="mono" data-en="I build systems">Ich entwickle Systeme,</span><p data-en="so the same problems ideally never come back.">damit dieselben Probleme möglichst nicht erneut entstehen.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOUNDER ================= -->
+<section class="section founder" id="founder">
+  <div class="wrap founder-grid">
+    <aside class="portrait-col">
+      <div class="portrait">
+        <img src="/assets/lars-orlamuende.jpg" width="1200" height="1500" loading="lazy" decoding="async" alt="Lars Orlamünde, Founder &amp; CEO der TradeX International AG, als Raster-Grafik" data-en-alt="Lars Orlamünde, Founder &amp; CEO of TradeX International AG, as a halftone graphic">
+        <span class="shade" aria-hidden="true"></span>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <div class="ph-top mono" aria-hidden="true"><span class="rec"><i></i>Live</span><span data-en="halftone · 10px">Raster · 10px</span></div>
+        <div class="ph mono" aria-hidden="true"><span>Lars Orlamünde</span><span>Founder &amp; CEO</span></div>
+      </div>
+      <dl class="spec">
+        <div><dt>Name</dt><dd>Lars Orlamünde</dd></div>
+        <div><dt data-en="E-commerce">E-Commerce</dt><dd data-en="since 2018">seit 2018</dd></div>
+        <div><dt data-en="Role">Rolle</dt><dd>Founder &amp; CEO</dd></div>
+        <div><dt data-en="Company">Unternehmen</dt><dd>TradeX International AG</dd></div>
+        <div><dt data-en="Available for">Buchbar für</dt><dd data-en="Interim management, marketplace strategy, engineering &amp; automation">Interim Management, Marktplatzstrategie, Engineering &amp; Automatisierung</dd></div>
+      </dl>
+    </aside>
+
+    <div class="founder-copy">
+      <div class="label mono"><i class="sq"></i><span data-en="About me">Über mich</span> <span class="path">/founder</span></div>
+      <h2 class="reveal" data-en="Built by an operator.<br><span class='dim'>Driven by technology.</span>">Gebaut von einem Praktiker.<br><span class="dim">Angetrieben von Technologie.</span></h2>
+      <div class="founder-text reveal d1">
+        <p data-en="I came to e-commerce in 2018.">Ich bin 2018 zum E-Commerce gekommen.</p>
+        <p data-en="I quickly realised that my coding background helped me understand the Amazon algorithm and turn that understanding into revenue. Tools like Helium 10 made data visible at the time that simply had not been available before.">Schnell habe ich gemerkt, dass mir meine Coding-Erfahrung hilft, den Amazon-Algorithmus zu verstehen und daraus Umsatz zu machen. Tools wie Helium 10 machten damals Daten sichtbar, die es vorher so nicht gab.</p>
+        <p data-en="I trained companies in this knowledge, always with the goal of building it into the company itself instead of acting as a classic agency.">Dieses Wissen habe ich in Unternehmen geschult. Mein Ziel war immer, das Wissen ins Unternehmen zu bringen, statt als klassische Agentur aufzutreten.</p>
+        <p data-en="Because the systems were so complex, that was often a real challenge.">Wegen der Komplexität der Systeme war das oft eine grosse Herausforderung.</p>
+        <p data-en="With today’s technology, marketplace systems can be simplified to the point where they are easy to use and largely automated.">Mit der Technologie von heute lassen sich die Systeme der Marktplätze so vereinfachen, dass sie einfach zu bedienen und weitgehend automatisierbar sind.</p>
+        <p data-en="That is also how my software company ASEIO came about.">Daraus ist auch mein Softwareunternehmen ASEIO entstanden.</p>
+      </div>
+      <figure class="quote reveal">
+        <blockquote data-en="<span class='qm'>“</span>I don’t just advise businesses on technology. I build the systems they run on.<span class='qm'>”</span>"><span class="qm">«</span>Ich berate Unternehmen nicht nur zu Technologie. Ich baue die Systeme, mit denen sie arbeiten.<span class="qm">»</span></blockquote>
+        <figcaption class="mono"><span>Lars Orlamünde</span><span>Founder &amp; CEO</span></figcaption>
+      </figure>
+      <div><a class="btn btn-primary" href="#kontakt"><span data-en="Book a call with me">Gespräch mit mir vereinbaren</span> <span class="arr" aria-hidden="true">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENGINEERING ================= -->
+<section class="section engineering" id="engineering">
+  <div class="wrap eng-grid">
+    <div class="eng-copy">
+      <div class="label mono"><i class="sq"></i><span data-en="Engineering &amp; Automation">Engineering &amp; Automatisierung</span> <span class="path">/engineering</span></div>
+      <h2 class="reveal" data-en="Efficiency<br>is <span class='dim'>engineered.</span>">Effizienz ist<br><span class="dim">Ingenieursarbeit.</span></h2>
+      <div class="eng-text reveal d1">
+        <p data-en="I believe in processes that simply work.">Ich glaube an Prozesse, die einfach funktionieren.</p>
+        <p data-en="That is why I standardise and automate recurring tasks, from product data maintenance and quote preparation to day-to-day account management.">Deshalb standardisiere und automatisiere ich wiederkehrende Aufgaben – von der Produktdatenpflege über die Angebotserstellung bis zur operativen Account-Betreuung.</p>
+        <p data-en="My systems are built so that complex workflows become easy to operate.">Meine Systeme sind so aufgebaut, dass komplexe Abläufe einfach bedienbar werden.</p>
+        <p data-en="With my own software, AI assistants, my team and a specialised network, I create efficient structures without unnecessary overhead.">Mit eigenen Softwarelösungen, KI-Assistenten, meinem Team und einem spezialisierten Netzwerk schaffe ich effiziente Strukturen ohne unnötigen Overhead.</p>
+      </div>
+      <div class="eng-tasks reveal d2">
+        <div><span data-en="Product data maintenance">Produktdatenpflege</span><span class="mono" data-en="automated">automatisiert</span></div>
+        <div><span data-en="Quote preparation">Angebotserstellung</span><span class="mono" data-en="standardised">standardisiert</span></div>
+        <div><span data-en="Account management">Operative Account-Betreuung</span><span class="mono" data-en="system-supported">systemgestützt</span></div>
+      </div>
+    </div>
+
+    <div class="pipe-col">
+      <div class="pipeline reveal" aria-label="Prozess: Eingang, Validierung, KI und Automatisierung, Freigabe durch Menschen, Ausführung" data-en-aria="Process: input, validation, AI and automation, human approval, execution">
+        <div class="pipe-head mono"><span>process.flow</span><span class="live"><i></i><span id="pipeState">läuft</span></span></div>
+        <ol class="pipe-steps" id="pipe">
+          <li class="step" data-i="0">
+            <div class="rail"><span class="dot"></span><span class="arrow">↓</span></div>
+            <div class="name"><span class="t" data-en="Input">Eingang</span><span class="d" data-en="Data from marketplaces, ERP and feeds">Daten aus Marktplätzen, ERP und Feeds</span></div>
+            <span class="chip"></span>
+          </li>
+          <li class="step" data-i="1">
+            <div class="rail"><span class="dot"></span><span class="arrow">↓</span></div>
+            <div class="name"><span class="t" data-en="Validation">Validierung</span><span class="d" data-en="Rules, required fields, plausibility">Regeln, Pflichtfelder, Plausibilität</span></div>
+            <span class="chip"></span>
+          </li>
+          <li class="step" data-i="2">
+            <div class="rail"><span class="dot"></span><span class="arrow">↓</span></div>
+            <div class="name"><span class="t" data-en="AI &amp; Automation">KI &amp; Automatisierung</span><span class="d" data-en="AI assistants and workflows prepare the work">KI-Assistenten und Workflows bereiten vor</span></div>
+            <span class="chip"></span>
+          </li>
+          <li class="step human" data-i="3">
+            <div class="rail"><span class="dot"></span><span class="arrow">↓</span></div>
+            <div class="name"><span class="t" data-en="Human Approval">Freigabe durch Menschen</span><span class="d" data-en="A person reviews and takes responsibility">Ein Mensch prüft und trägt die Verantwortung</span></div>
+            <span class="chip"></span>
+          </li>
+          <li class="step" data-i="4">
+            <div class="rail"><span class="dot"></span><span class="arrow">↓</span></div>
+            <div class="name"><span class="t" data-en="Execution">Ausführung</span><span class="d" data-en="Submission, logging, feedback">Übermittlung, Protokoll, Rückmeldung</span></div>
+            <span class="chip"></span>
+          </li>
+        </ol>
+        <div class="pipe-foot mono"><span><i class="round"></i>System</span><span><i></i><span data-en="Human">Mensch</span></span><span style="margin-left:auto" data-en="Systems prepare. People decide.">Systeme bereiten vor. Menschen entscheiden.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap goal">
+    <div class="goal-head">
+      <div class="label mono"><i class="sq"></i><span data-en="My goal">Mein Ziel</span></div>
+      <p class="goal-text reveal" data-en="I simplify complex systems until <span class='hi'>anyone can operate them</span>, and I interpret reports so that <span class='hi'>management gets exactly what it needs to decide.</span>">Ich vereinfache komplexe Systeme so weit, dass <span class="hi">jeder sie bedienen kann</span>, und interpretiere Berichte so, dass <span class="hi">die Geschäftsführung genau die Informationen erhält, die sie für Entscheidungen braucht.</span></p>
+    </div>
+    <div class="goal-pair">
+      <article class="goal-item reveal">
+        <span class="mono" data-en="Operation">Bedienung</span>
+        <h3 data-en="Systems anyone can use">Systeme, die jeder bedienen kann</h3>
+        <p data-en="Complexity stays inside the system. The people who use it see clear steps, plain language and only the decisions that are theirs to make.">Die Komplexität bleibt im System. Wer damit arbeitet, sieht klare Schritte, verständliche Begriffe und nur die Entscheidungen, die bei ihm liegen.</p>
+        <div class="goal-flow mono" aria-hidden="true"><span data-en="complex system">komplexes System</span><span class="ar">→</span><span class="em" data-en="simple operation">einfache Bedienung</span></div>
+      </article>
+      <article class="goal-item reveal d1">
+        <span class="mono" data-en="Reporting">Berichte</span>
+        <h3 data-en="Reports that lead to decisions">Berichte, die zu Entscheidungen führen</h3>
+        <p data-en="I do not just pass on data. I interpret it and condense it into what management needs: where things stand, what has changed and what needs a decision.">Ich reiche keine Datenmengen weiter. Ich interpretiere sie und verdichte sie auf das, was die Geschäftsführung braucht: wo man steht, was sich verändert hat und was eine Entscheidung verlangt.</p>
+        <div class="goal-flow mono" aria-hidden="true"><span data-en="raw data">rohe Daten</span><span class="ar">→</span><span data-en="interpretation">Interpretation</span><span class="ar">→</span><span class="em" data-en="decision">Entscheidung</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STACK ================= -->
+<section class="section stack" id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i><span data-en="Technology">Technologie</span> <span class="path">/stack</span></div>
+      <h2 class="reveal" data-en="Technology is part<br><span class='dim'>of my DNA.</span>">Technologie ist Teil<br><span class="dim">meiner DNA.</span></h2>
+    </div>
+    <div class="stack-legend mono">
+      <span><i class="key used"></i><span data-en="Technologies I use">Eingesetzte Technologien</span></span>
+      <span><i class="key platform"></i><span data-en="Platform knowledge &amp; integrations">Plattformkenntnisse &amp; Integrationen</span></span>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-col reveal">
+        <header><h3><i class="key used"></i><span data-en="Engineering">Entwicklung</span></h3><span class="mono">07</span></header>
+        <ul>
+          <li>TypeScript <span class="k" data-en="language">sprache</span></li>
+          <li>JavaScript <span class="k" data-en="language">sprache</span></li>
+          <li>Next.js <span class="k">framework</span></li>
+          <li>Node.js <span class="k" data-en="runtime">laufzeit</span></li>
+          <li>SQL / MariaDB <span class="k" data-en="database">datenbank</span></li>
+          <li>Docker <span class="k" data-en="infrastructure">infrastruktur</span></li>
+          <li>REST APIs <span class="k" data-en="interface">schnittstelle</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal d1">
+        <header><h3><i class="key used"></i><span data-en="AI &amp; Automation">KI &amp; Automatisierung</span></h3><span class="mono">04</span></header>
+        <ul>
+          <li><span data-en="LLM integration">LLM-Integration</span> <span class="k" data-en="ai">ki</span></li>
+          <li><span data-en="AI agents">KI-Agenten</span> <span class="k" data-en="ai">ki</span></li>
+          <li><span data-en="Workflow automation">Workflow-Automatisierung</span> <span class="k" data-en="ops">betrieb</span></li>
+          <li><span data-en="Data processing">Datenverarbeitung</span> <span class="k" data-en="data">daten</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal d2">
+        <header><h3><i class="key platform"></i>Commerce</h3><span class="mono">09</span></header>
+        <ul>
+          <li>Amazon SP-API <span class="k">api</span></li>
+          <li>PlentyOne <span class="k">erp</span></li>
+          <li>Shopify <span class="k">shop</span></li>
+          <li>eBay <span class="k" data-en="marketplace">marktplatz</span></li>
+          <li>OTTO <span class="k" data-en="marketplace">marktplatz</span></li>
+          <li>Kaufland <span class="k" data-en="marketplace">marktplatz</span></li>
+          <li>Temu <span class="k" data-en="marketplace">marktplatz</span></li>
+          <li>Mirakl <span class="k" data-en="integration">anbindung</span></li>
+          <li>Weclapp <span class="k">erp</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce lists the platforms and systems I know operationally and integrate with.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce beschreibt die Plattformen und Systeme, die ich operativ kenne und anbinde.</p>
+  </div>
+</section>
+
+<!-- ================= ASEIO ================= -->
+<section class="aseio" id="software" aria-label="Eigene Software" data-en-aria="In-house software">
+  <div class="wrap aseio-grid">
+    <div class="aseio-id">
+      <span class="mono"><i class="sq"></i><span data-en="Built in-house">Eigenentwicklung</span></span>
+      <span class="aseio-word">ASEIO</span>
+    </div>
+    <p class="aseio-text" data-en="My own software platform for AI-supported product data optimisation and marketplace processes.<small>Born from years of marketplace practice: complex systems, made simple to operate and largely automated.</small>">Meine eigene Softwareplattform für KI-gestützte Produktdatenoptimierung und Marketplace-Prozesse.<small>Entstanden aus der Praxis: komplexe Marktplatz-Systeme, einfach bedienbar und weitgehend automatisiert.</small></p>
+    <div class="diff" aria-label="Beispielhafte Produktdaten-Optimierung" data-en-aria="Example of product data optimisation">
+      <div class="diff-bar"><span>listing.diff</span><span data-en="example">beispiel</span></div>
+      <div class="diff-body">
+        <div class="diff-row rm"><span class="f">title</span><span class="s">−</span><span class="v" data-en="Headphones black BT">Kopfhörer schwarz BT</span></div>
+        <div class="diff-row add"><span class="f"></span><span class="s">+</span><span class="v" data-en="Wireless over-ear headphones, Bluetooth, black">Kabellose Over-Ear-Kopfhörer, Bluetooth, Schwarz</span></div>
+        <div class="diff-row add"><span class="f">bullets</span><span class="s">+</span><span class="v" data-en="complete per category guidelines">vollständig nach Kategorie-Vorgaben</span></div>
+        <div class="diff-row add"><span class="f">attrs</span><span class="s">+</span><span class="v" data-en="required attributes added">Pflichtattribute ergänzt</span></div>
+        <div class="diff-row"><span class="f">status</span><span class="s ok">●</span><span class="v" data-en="awaiting approval">zur Freigabe</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK WITH US ================= -->
+<section class="section work" id="zusammenarbeit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i><span data-en="Work with me">Zusammenarbeit</span> <span class="path">/zusammenarbeit</span></div>
+      <h2 class="reveal" data-en="Expertise when<br><span class='dim'>you need it.</span>">Expertise, wenn<br><span class="dim">Sie sie brauchen.</span></h2>
+    </div>
+    <div class="models">
+      <article class="model reveal">
+        <span class="mono"><span data-en="Model A">Modell A</span><span data-en="Project">Projekt</span></span>
+        <h3 data-en="Consulting &amp;<br>Interim">Beratung &amp;<br>Interim</h3>
+        <p data-en="Personal strategic and operational support on a project basis.">Persönliche strategische und operative Unterstützung auf Projektbasis.</p>
+        <dl><dt data-en="Format">Form</dt><dd data-en="In person, directly with me">Persönlich, direkt mit mir</dd><dt data-en="Scope">Rahmen</dt><dd data-en="Project basis">Projektbasis</dd></dl>
+      </article>
+      <article class="model reveal d1">
+        <span class="mono"><span data-en="Model B">Modell B</span><span data-en="Ongoing">Laufend</span></span>
+        <h3 data-en="Managed<br>Operations">Laufende<br>Betreuung</h3>
+        <p data-en="Ongoing management and optimisation of marketplace businesses.">Laufende Betreuung und Optimierung von Marketplace-Geschäften.</p>
+        <dl><dt data-en="Format">Form</dt><dd data-en="Me and my team, with my own systems">Ich und mein Team, mit eigenen Systemen</dd><dt data-en="Scope">Rahmen</dt><dd data-en="Continuous">Kontinuierlich</dd></dl>
+      </article>
+      <article class="model reveal d2">
+        <span class="mono"><span data-en="Model C">Modell C</span><span data-en="Build">Entwicklung</span></span>
+        <h3 data-en="Engineering &amp;<br>Automation">Entwicklung &amp;<br>Automatisierung</h3>
+        <p data-en="Custom software development and technical process optimisation.">Individuelle Softwareentwicklung und technische Prozessoptimierung.</p>
+        <dl><dt data-en="Format">Form</dt><dd data-en="Software, APIs, automation">Software, APIs, Automatisierung</dd><dt data-en="Scope">Rahmen</dt><dd data-en="Project or ongoing">Projekt oder fortlaufend</dd></dl>
+      </article>
+    </div>
+    <a class="big-cta" href="#kontakt"><span class="txt" data-en="Let’s work together">Zusammenarbeit starten</span><span class="arr" aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="kontakt">
+  <div class="wrap">
+    <div class="label mono" style="margin-bottom:28px"><i class="sq"></i><span data-en="Contact">Kontakt</span> <span class="path">/kontakt</span></div>
+    <h2 class="reveal" aria-label="Lassen Sie uns etwas Besseres, Effektiveres und Lukrativeres bauen." data-en-aria="Let’s build something better, more effective and more profitable."><span class="cl" aria-hidden="true" data-en="Let’s build<br>something">Lassen Sie uns<br>etwas</span> <span class="cw" aria-hidden="true"><span class="dim rot" id="cword">Besseres</span></span> <span class="cl" aria-hidden="true" data-en="">bauen.</span></h2>
+    <div class="contact-grid">
+      <div class="contact-main">
+        <p data-en="Do you have a project, a challenge, or want to make your e-commerce processes more efficient? Let’s talk.">Sie haben ein Projekt, eine Herausforderung oder möchten Ihre E-Commerce-Prozesse effizienter gestalten? Lassen Sie uns sprechen.</p>
+        <div><button class="btn btn-primary" id="openForm" aria-expanded="false" aria-controls="form"><span data-en="Request a project">Projekt anfragen</span> <span class="arr" aria-hidden="true">→</span></button></div>
+        <form class="form" id="form" hidden novalidate>
+          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name"></div>
+          <div class="field"><label for="f-company" data-en="Company">Unternehmen</label><input id="f-company" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="f-mail" data-en="Email">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="f-topic" data-en="Topic">Thema</label>
+            <select id="f-topic" name="topic"><option value="consulting" data-en="Consulting &amp; Interim">Beratung &amp; Interim</option><option value="operations" data-en="Managed Operations">Laufende Betreuung</option><option value="engineering" data-en="Engineering &amp; Automation">Entwicklung &amp; Automatisierung</option><option value="other" data-en="Something else">Etwas anderes</option></select></div>
+          <div class="field full"><label for="f-msg" data-en="Message">Nachricht</label><textarea id="f-msg" name="message" placeholder="Worum geht es?" data-en-ph="What is it about?"></textarea></div>
+          <div class="full"><button class="btn btn-primary" type="submit"><span data-en="Send request">Anfrage senden</span> <span class="arr" aria-hidden="true">→</span></button></div>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+      <dl class="contact-card">
+        <div><dt data-en="Company">Firma</dt><dd>TradeX International AG</dd><span></span></div>
+        <div><dt data-en="Email">E-Mail</dt><dd><a href="mailto:lars@tradexag.ch" id="mail">lars@tradexag.ch</a></dd><button class="copy" id="copyMail" type="button" data-en="Copy">Kopieren</button></div>
+        <div><dt>Domain</dt><dd>tradexag.ch</dd><span></span></div>
+      </dl>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap mono">
+    <span>© 2026 TradeX International AG</span>
+    <nav aria-label="Rechtliches" data-en-aria="Legal"><a href="/impressum.html" data-en="Legal notice">Impressum</a><a href="/datenschutz.html" data-en="Privacy">Datenschutz</a><a href="#top" data-en="Back to top ↑">Nach oben ↑</a></nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lang = 'de';
+  var T = {
+    de: {
+      menuOpen:'Menü öffnen', menuClose:'Menü schließen', done:'done · keine manuelle Nacharbeit',
+      run:['empfängt','prüft','verarbeitet','in prüfung','führt aus'],
+      fin:['empfangen','bestanden','vorbereitet','freigegeben','abgeschlossen'],
+      waiting:'wartet', sRun:'läuft', sReview:'wartet auf Freigabe', sDone:'abgeschlossen',
+      note:'',
+      sent:'Ihr E-Mail-Programm öffnet sich mit der fertigen Anfrage. Falls nicht, schreiben Sie bitte direkt an lars@tradexag.ch.', subj:'Projektanfrage über tradexag.ch', lblCompany:'Unternehmen', lblTopic:'Thema', lblMail:'E-Mail',
+      copied:'Kopiert', copy:'Kopieren', marked:'Markiert'
+    },
+    en: {
+      menuOpen:'Open menu', menuClose:'Close menu', done:'done · no manual rework',
+      run:['receiving','checking','processing','in review','executing'],
+      fin:['received','passed','prepared','approved','completed'],
+      waiting:'waiting', sRun:'running', sReview:'awaiting approval', sDone:'completed',
+      note:'',
+      sent:'Your mail program opens with the request filled in. If it does not, please write to lars@tradexag.ch directly.', subj:'Project request via tradexag.ch', lblCompany:'Company', lblTopic:'Topic', lblMail:'Email',
+      copied:'Copied', copy:'Copy', marked:'Selected'
+    }
+  };
+  function t(k){ return T[lang][k]; }
+
+  /* header state + progress */
+  var header = document.getElementById('header'), bar = document.getElementById('progress');
+  function onScroll(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    header.classList.toggle('scrolled', y > 8);
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
+  }
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* mobile menu */
+  var burger = document.getElementById('burger'), menu = document.getElementById('mobileMenu');
+  function setMenu(open){
+    menu.hidden = !open;
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? t('menuClose') : t('menuOpen'));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function(){ setMenu(menu.hidden); });
+  menu.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  addEventListener('resize', function(){ if (innerWidth > 960 && !menu.hidden) setMenu(false); });
+
+  /* language switch */
+  var langBtn = document.getElementById('langBtn'), langMenu = document.getElementById('langMenu'), langCur = document.getElementById('langCur');
+  function setLangMenu(open){ langMenu.hidden = !open; langBtn.setAttribute('aria-expanded', open); }
+  langBtn.addEventListener('click', function(e){ e.stopPropagation(); setLangMenu(langMenu.hidden); });
+  langMenu.addEventListener('click', function(e){
+    var b = e.target.closest('[data-lang]'); if (!b) return;
+    applyLang(b.getAttribute('data-lang')); setLangMenu(false); langBtn.focus();
+  });
+  document.addEventListener('click', function(e){ if (!langMenu.hidden && !e.target.closest('#lang')) setLangMenu(false); });
+  addEventListener('keydown', function(e){
+    if (e.key !== 'Escape') return;
+    if (!langMenu.hidden){ setLangMenu(false); langBtn.focus(); }
+    else if (!menu.hidden) setMenu(false);
+  });
+
+  function applyLang(l){
+    lang = l === 'en' ? 'en' : 'de';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if (el.dataset.de === undefined) el.dataset.de = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.de;
+    });
+    document.querySelectorAll('[data-en-aria]').forEach(function(el){
+      if (el.dataset.deAria === undefined) el.dataset.deAria = el.getAttribute('aria-label') || '';
+      el.setAttribute('aria-label', lang === 'en' ? el.dataset.enAria : el.dataset.deAria);
+    });
+    document.querySelectorAll('[data-en-alt]').forEach(function(el){
+      if (el.dataset.deAlt === undefined) el.dataset.deAlt = el.getAttribute('alt') || '';
+      el.setAttribute('alt', lang === 'en' ? el.dataset.enAlt : el.dataset.deAlt);
+    });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      if (el.dataset.dePh === undefined) el.dataset.dePh = el.getAttribute('placeholder') || '';
+      el.setAttribute('placeholder', lang === 'en' ? el.dataset.enPh : el.dataset.dePh);
+    });
+    langCur.textContent = lang === 'en' ? 'English' : 'Deutsch';
+    langMenu.querySelectorAll('[data-lang]').forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-lang') === lang); });
+    burger.setAttribute('aria-label', menu.hidden ? t('menuOpen') : t('menuClose'));
+    note.classList.remove('show'); note.textContent = t('note');
+    copyBtn.textContent = t('copy');
+    paint(curStep);
+    if (reduce) renderStatic(); else runTerminal();
+    if (typeof setCword === 'function') setCword();
+    document.documentElement.lang = lang;
+    try { localStorage.setItem('tradex-lang', lang); } catch(err){}
+  }
+
+  /* reveal: content is visible at rest; elements below the fold animate as they enter */
+  if (!reduce && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:0});
+    document.querySelectorAll('.reveal').forEach(function(el){
+      if (el.getBoundingClientRect().top > innerHeight) io.observe(el);
+    });
+  }
+
+  /* active nav link */
+  var links = document.querySelectorAll('[data-nav]');
+  if ('IntersectionObserver' in window){
+    var navIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    ['expertise','founder','engineering','stack','zusammenarbeit','kontakt','top'].forEach(function(id){ var s = document.getElementById(id); if (s) navIO.observe(s); });
+  }
+
+  /* hero terminal */
+  var term = document.getElementById('termBody'), flowNodes = document.querySelectorAll('#flow .node');
+  var MODES = [
+    { verb:{de:'entwickle', en:'engineer'}, scope:'engineer',
+      cmd:'tradex build integration --targets sp-api,mirakl,plentyone',
+      lines:[['spec','requirements captured with the client',0],['api','sp-api & mirakl connectors built',0],['db','schema migrated · mariadb',1],['agent','llm assistant deployed',1],['test','integration tests passed',1],['review','approved by operator',2],['deploy','live · docker',2]],
+      svc:{de:['Individuelle Software','API-Integrationen','Amazon SP-API','Mirakl-Anbindung','ERP-Anbindung','PlentyOne','Weclapp','Datenbanken','KI-Assistenten','Next.js · Node.js'],
+           en:['Custom software','API integrations','Amazon SP-API','Mirakl integration','ERP integration','PlentyOne','Weclapp','Databases','AI assistants','Next.js · Node.js']} },
+    { verb:{de:'optimiere', en:'optimise'}, scope:'optimise',
+      cmd:'tradex optimise listings --channels amazon,temu,otto,kaufland,ebay',
+      lines:[['data','catalog & stock synced',0],['validate','listings & attributes · 0 errors',1],['content','titles & bullets enriched · llm',1],['pricing','pricing rules applied',1],['health','account health checked',1],['review','approved by operator',2],['execution','pushed via sp-api & mirakl',2]],
+      svc:{de:['Amazon Seller Central','Vendor Central','Account Health','Listing-Optimierung','Produktdaten','Temu','OTTO','Kaufland','eBay','Internationalisierung'],
+           en:['Amazon Seller Central','Vendor Central','Account Health','Listing optimisation','Product data','Temu','OTTO','Kaufland','eBay','Internationalisation']} },
+    { verb:{de:'analysiere', en:'analyse'}, scope:'analyse',
+      cmd:'tradex analyse performance --channels all --period 90d',
+      lines:[['data','sales, traffic & stock loaded',0],['market','market & competitor data analysed',0],['trend','trends & anomalies detected',1],['drivers','key revenue drivers identified',1],['options','decision options prepared',1],['review','checked by operator',2],['report','management summary generated',2]],
+      svc:{de:['Marktdatenanalyse','Umsatz- & Bestandsanalyse','Wettbewerbsanalyse','Marktplatzstrategie','Interim Head of E-Commerce','Entscheidungsvorlagen','Reporting für die Geschäftsführung'],
+           en:['Market data analysis','Sales & stock analysis','Competitor analysis','Marketplace strategy','Interim Head of E-Commerce','Decision papers','Management reporting']} },
+    { verb:{de:'automatisiere', en:'automate'}, scope:'automate',
+      cmd:'tradex automate workflows --schedule daily',
+      lines:[['trigger','new orders & product data detected',0],['agent','ai agents assigned to tasks',1],['quote','quotes drafted automatically',1],['data','product data maintained',1],['monitor','account health watched 24/7',1],['review','exceptions sent for approval',2],['execution','workflows completed · logged',2]],
+      svc:{de:['KI-Agenten','Workflow-Automatisierung','Angebotserstellung','Produktdatenpflege','Account-Betreuung','Prozessoptimierung','Datenverarbeitung','Weniger manuelle Arbeit'],
+           en:['AI agents','Workflow automation','Quote preparation','Product data maintenance','Account management','Process optimisation','Data processing','Less manual work']} }
+  ];
+  var mode = 0;
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function setFlow(stage, done){
+    flowNodes.forEach(function(n, i){
+      n.classList.toggle('on', i === stage && !done);
+      n.classList.toggle('done', i < stage || done);
+    });
+  }
+  function setVerb(animate){
+    var v = document.getElementById('verb'); if (!v) return;
+    var word = MODES[mode].verb[lang];
+    if (!animate || reduce){ v.textContent = word; return; }
+    v.classList.add('out');
+    later(function(){ v.textContent = word; v.classList.remove('out'); }, 260);
+  }
+  function lineHTML(l, state){
+    var st = state === 'ok' ? '<span class="st ok">ok</span>' : '<span class="st wait">' + (l[0] === 'review' ? 'review' : 'run') + '</span>';
+    return '<div class="term-line"><span class="tag">[' + l[0] + ']</span><span>' + esc(l[1]) + '</span>' + st + '</div>';
+  }
+  function cmdHTML(text, cursor){
+    return '<div class="term-cmd"><span class="prompt">~/tradex $ </span>' + esc(text) + (cursor ? '<span class="term-cursor"></span>' : '') + '</div>';
+  }
+  function svcHTML(list, n){
+    return '<div class="term-svc">' + list.slice(0, n).map(function(s){ return '<span>' + esc(s) + '</span>'; }).join('') + '</div>';
+  }
+  var timers = [];
+  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+  function renderStatic(){
+    timers.forEach(clearTimeout); timers = [];
+    var M = MODES[mode], sc = 'tradex services --scope ' + M.scope;
+    setVerb(false);
+    term.innerHTML = cmdHTML(M.cmd) + M.lines.map(function(l){ return lineHTML(l,'ok'); }).join('') + '<div class="term-done">' + esc(t('done')) + '</div>' + cmdHTML(sc) + svcHTML(M.svc[lang], M.svc[lang].length);
+    setFlow(2, true);
+  }
+  function runTerminal(animateVerb){
+    timers.forEach(clearTimeout); timers = [];
+    var M = MODES[mode], SC = 'tradex services --scope ' + M.scope, list = M.svc[lang];
+    var tm = 0, i;
+    setVerb(animateVerb === true);
+    term.innerHTML = cmdHTML('', true); setFlow(-1, false);
+    for (i = 1; i <= M.cmd.length; i++) (function(n){ later(function(){ term.innerHTML = cmdHTML(M.cmd.slice(0,n), true); }, tm += 22); })(i);
+    tm += 350;
+    var html = cmdHTML(M.cmd);
+    M.lines.forEach(function(l){
+      later(function(){ term.innerHTML = html + lineHTML(l,'run'); setFlow(l[2], false); }, tm);
+      tm += (l[0] === 'review') ? 1000 : 420;
+      later(function(){ html += lineHTML(l,'ok'); term.innerHTML = html; }, tm);
+      tm += 100;
+    });
+    later(function(){ html += '<div class="term-done">' + esc(t('done')) + '</div>'; term.innerHTML = html; setFlow(2, true); }, tm += 200);
+    tm += 500;
+    for (i = 1; i <= SC.length; i++) (function(n){ later(function(){ term.innerHTML = html + cmdHTML(SC.slice(0,n), true); }, tm += 26); })(i);
+    tm += 250;
+    var base = '';
+    later(function(){ base = html + cmdHTML(SC); }, tm);
+    for (i = 1; i <= list.length; i++) (function(n){ later(function(){ term.innerHTML = base + svcHTML(list, n); }, tm += 110); })(i);
+    later(function(){ mode = (mode + 1) % MODES.length; runTerminal(true); }, tm + 4000);
+  }
+
+  /* engineering pipeline */
+  var steps = document.querySelectorAll('#pipe .step'), pipeState = document.getElementById('pipeState');
+  var curStep = 3;
+  function paint(cur){
+    curStep = cur;
+    steps.forEach(function(s, i){
+      var chip = s.querySelector('.chip');
+      s.classList.remove('done','run','wait');
+      if (i < cur){ s.classList.add('done'); chip.textContent = t('fin')[i]; }
+      else if (i === cur){ s.classList.add('run'); chip.textContent = t('run')[i]; }
+      else { s.classList.add('wait'); chip.textContent = t('waiting'); }
+    });
+    pipeState.textContent = cur >= steps.length ? t('sDone') : (cur === 3 ? t('sReview') : t('sRun'));
+  }
+  if (!reduce){
+    var next = 0, visible = false, pTimer = null;
+    function tick(){
+      paint(next);
+      var wait = next === 3 ? 2400 : (next >= steps.length ? 2600 : 1250);
+      next = next >= steps.length ? 0 : next + 1;
+      pTimer = setTimeout(function(){ if (visible) tick(); else pTimer = null; }, wait);
+    }
+    var pipeEl = document.getElementById('pipe');
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){
+        visible = en[0].isIntersecting;
+        if (visible && !pTimer){ tick(); }
+      }, {threshold:.25}).observe(pipeEl);
+    } else { visible = true; tick(); }
+  }
+
+  /* contact */
+  var openBtn = document.getElementById('openForm'), form = document.getElementById('form'), note = document.getElementById('formNote');
+  openBtn.addEventListener('click', function(){
+    form.hidden = !form.hidden;
+    openBtn.setAttribute('aria-expanded', !form.hidden);
+    if (!form.hidden) document.getElementById('f-name').focus();
+  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
+    var topic = document.getElementById('f-topic');
+    var body = v('f-msg') + '\n\n--\n' + v('f-name')
+      + (v('f-company') ? '\n' + t('lblCompany') + ': ' + v('f-company') : '')
+      + (v('f-mail') ? '\n' + t('lblMail') + ': ' + v('f-mail') : '')
+      + '\n' + t('lblTopic') + ': ' + topic.options[topic.selectedIndex].text;
+    note.classList.add('show');
+    note.textContent = t('sent');
+    location.href = 'mailto:lars@tradexag.ch?subject=' + encodeURIComponent(t('subj')) + '&body=' + encodeURIComponent(body);
+  });
+  var copyBtn = document.getElementById('copyMail');
+  copyBtn.addEventListener('click', function(){
+    var done = function(){ copyBtn.textContent = t('copied'); setTimeout(function(){ copyBtn.textContent = t('copy'); }, 1600); };
+    var fallback = function(){
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('mail'));
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r); copyBtn.textContent = t('marked');
+    };
+    try { navigator.clipboard.writeText('lars@tradexag.ch').then(done, fallback); } catch(err){ fallback(); }
+  });
+
+  /* portrait turns toward the viewer while scrolling in.
+     Driven by IntersectionObserver so it also works when the page is shown
+     inside a frame that the host app scrolls (window scroll never fires there). */
+  var portrait = document.querySelector('.portrait');
+  if (portrait && !reduce){
+    var setTurn = function(p){
+      var e = 1 - Math.pow(1 - p, 3);
+      portrait.style.setProperty('--ry', ((1 - e) * -62).toFixed(2) + 'deg');
+      portrait.style.setProperty('--sc', (0.9 + 0.1 * e).toFixed(3));
+      portrait.style.setProperty('--sh', ((1 - e) * 0.55).toFixed(3));
+    };
+    setTurn(0);
+    if ('IntersectionObserver' in window){
+      var th = []; for (var k = 0; k <= 50; k++) th.push(k / 50);
+      new IntersectionObserver(function(en){
+        var x = en[0];
+        var p = Math.min(1, x.intersectionRatio / 0.75);
+        if (x.isIntersecting && x.boundingClientRect.top < 0) p = 1;   // already scrolled past the top edge
+        setTurn(p);
+      }, {threshold: th}).observe(portrait);
+    } else { setTurn(1); }
+  }
+
+  /* contact headline: rotating adjective */
+  var CWORDS = { de:['Besseres','Effektiveres','Lukrativeres'], en:['better.','more effective.','more profitable.'] }, cIdx = 0;
+  function setCword(){ var el = document.getElementById('cword'); if (el) el.textContent = CWORDS[lang][cIdx]; }
+  if (!reduce){
+    setInterval(function(){
+      var el = document.getElementById('cword'); if (!el) return;
+      el.classList.add('out');
+      setTimeout(function(){ cIdx = (cIdx + 1) % 3; setCword(); el.classList.remove('out'); }, 300);
+    }, 2600);
+  }
+
+  /* start: German by default, remembered choice wins */
+  var saved = null;
+  try { saved = localStorage.getItem('tradex-lang'); } catch(err){}
+  applyLang(saved === 'en' ? 'en' : 'de');
+})();
+</script>
+</body></html>
