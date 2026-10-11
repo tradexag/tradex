@@ -27,6 +27,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"TradeX International AG","url":"https://tradexag.ch/","logo":"https://tradexag.ch/apple-touch-icon.png","email":"lars@tradexag.ch","founder":{"@type":"Person","name":"Lars Orlamünde","jobTitle":"Founder & CEO"}}
 </script>
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('tw-init')}catch(e){}</script>
 <style>
 @font-face{font-family:'Geist';font-style:normal;font-weight:300;font-display:swap;src:url(/assets/fonts/geist-sans-latin-300-normal.woff2) format('woff2')}
 @font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/geist-sans-latin-400-normal.woff2) format('woff2')}
@@ -176,6 +177,10 @@ p{margin:0}
 .hero-title .verb{display:inline-block;transition:opacity .26s var(--ease),transform .26s var(--ease)}
 @media (max-width:560px){html[lang="de"] .hero-title .l3{min-height:1.84em}}
 .hero-title .verb.out{opacity:0;transform:translateY(-.18em)}
+/* typewriter intro: text keeps its space while hidden, so nothing jumps */
+.tw-init .hero-title .l1,.tw-init .hero-title .l2,.tw-init .hero-title .l3,.tw-init .hero-sub{visibility:hidden}
+.hero-title .tw,.hero-sub .tw{display:inline}.tw{visibility:hidden}.tw.on{visibility:visible}
+.typing .caret{animation:none}
 .term-svc{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px;white-space:normal}
 .term-svc span{padding:1px 8px;border:1px solid #3A3A3A;border-radius:2px;color:#E9EAEB;font-size:12px;line-height:1.7}
 .term-cursor{display:inline-block;width:8px;height:15px;background:#E9EAEB;vertical-align:-2px;animation:blink 1s steps(1) infinite}
@@ -1172,6 +1177,53 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   var saved = null;
   try { saved = localStorage.getItem('tradex-lang'); } catch(err){}
   applyLang(saved === 'en' ? 'en' : 'de');
+})();
+</script>
+<script>
+/* typewriter intro: types the hero headline line by line, then the three mono lines; runs once on load */
+(function(){
+  var root = document.documentElement;
+  if (!root.classList.contains('tw-init')) return;
+  var lines = [].slice.call(document.querySelectorAll('.hero-title .l1, .hero-title .l2, .hero-title .l3, .hero-sub > span'));
+  var caret = document.querySelector('.hero-title .caret');
+  var steps = [];
+  lines.forEach(function(line){
+    var walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT, null), nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    var sub = !line.closest('.hero-title');
+    nodes.forEach(function(node){
+      var frag = document.createDocumentFragment();
+      node.nodeValue.split('').forEach(function(ch){
+        var s = document.createElement('span'); s.className = 'tw'; s.textContent = ch;
+        frag.appendChild(s); steps.push({el: s, line: line, sub: sub});
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+  });
+  root.classList.remove('tw-init');
+  if (!steps.length) return;
+  var home = caret && caret.parentNode, i = 0, prevLine = null;
+  if (caret) document.body.classList.add('typing');
+  function finish(){
+    steps.forEach(function(st){ st.el.classList.add('on'); });
+    if (caret) {
+      var other = document.querySelector('.hero-title .l3 .caret') !== caret ? document.querySelector('.hero-title .l3 .caret') : null;
+      if (other) caret.remove(); else if (home && home.isConnected) home.appendChild(caret);
+    }
+    document.body.classList.remove('typing');
+  }
+  function tick(){
+    if (i >= steps.length) { finish(); return; }
+    var st = steps[i++];
+    if (!st.el.isConnected) { finish(); return; }   // language switched mid-typing
+    st.el.classList.add('on');
+    if (caret) st.el.parentNode.insertBefore(caret, st.el.nextSibling);
+    var next = steps[i], wait = st.sub ? 26 : 62;
+    if (next && next.line !== st.line) wait = st.sub ? 160 : 260;
+    else if (st.el.textContent === ' ') wait += 30;
+    setTimeout(tick, wait);
+  }
+  setTimeout(tick, 350);
 })();
 </script>
 </body></html>
