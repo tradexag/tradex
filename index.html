@@ -194,6 +194,7 @@ p{margin:0}
 .hero-photo figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;padding:14px 34px;font-size:10px;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(17,17,17,.7));z-index:2}
 .hero-photo figcaption i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
 .hero-photo.side{position:absolute;margin:0;aspect-ratio:auto;z-index:0;transform:perspective(1600px) rotateY(-24deg) rotateZ(-1.5deg);transform-origin:100% 50%;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 38%);mask-image:linear-gradient(to right,transparent 0,#000 38%);box-shadow:-40px 30px 80px rgba(17,17,17,.18)}
+@media (max-width:899px){.hero-photo{width:86%}.hero-photo figcaption{padding:12px 16px;font-size:9px}}
 .hero-photo.side .c1,.hero-photo.side .c3{display:none}
 .hero-photo.side figcaption{padding-left:40%}
 .hero .hero-title,.hero .hero-meta{position:relative;z-index:1}
@@ -1328,10 +1329,11 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     });
     var room = w.right - pad - widest + w.width * 0.18;   // background layer: may slide under the grey lines, its left edge fades out
     var top = meta.getBoundingClientRect().top, h = l3.getBoundingClientRect().bottom - top;
-    var width = Math.min(room, w.width * 0.56, h * 1.5);
-    if (width < 320 || h < 260) return;
+    var full = h; h = full * 0.8;                          // a bit smaller than the headline block, centred on it
+    var width = Math.min(room * 0.85, w.width * 0.45, h * 1.5);
+    if (width < 300 || h < 220) return;
     fig.classList.add('side');
-    fig.style.top = (top - w.top) + 'px';
+    fig.style.top = (top - w.top + (full - h) / 2) + 'px';
     fig.style.right = pad + 'px';
     fig.style.width = width + 'px';
     fig.style.height = h + 'px';
