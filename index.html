@@ -193,7 +193,10 @@ p{margin:0}
 .hero-photo .c3{bottom:12px;left:12px;border-right:0;border-top:0}.hero-photo .c4{bottom:12px;right:12px;border-left:0;border-top:0}
 .hero-photo figcaption{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;padding:14px 34px;font-size:10px;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(17,17,17,.7));z-index:2}
 .hero-photo figcaption i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
-.hero-photo.side{position:absolute;margin:0;aspect-ratio:auto}
+.hero-photo.side{position:absolute;margin:0;aspect-ratio:auto;z-index:0;transform:perspective(1600px) rotateY(-24deg) rotateZ(-1.5deg);transform-origin:100% 50%;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 38%);mask-image:linear-gradient(to right,transparent 0,#000 38%);box-shadow:-40px 30px 80px rgba(17,17,17,.18)}
+.hero-photo.side .c1,.hero-photo.side .c3{display:none}
+.hero-photo.side figcaption{padding-left:40%}
+.hero .hero-title,.hero .hero-meta{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.hero-photo{clip-path:none;transition:none}.hero-photo img,.hero-photo.in img{animation:none;transform:none}.hero-photo .hp-scan{display:none}}
 /* typewriter intro: text keeps its space while hidden, so nothing jumps */
 .tw-init .hero-title .l1,.tw-init .hero-title .l2,.tw-init .hero-title .l3,.tw-init .hero-sub{visibility:hidden}
@@ -1241,10 +1244,10 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         widest = Math.max(widest, r.getBoundingClientRect().right);
       }
     });
-    var room = w.right - pad - widest - 48;
-    var top = meta.getBoundingClientRect().top, h = l3.getBoundingClientRect().top - 20 - top;
-    var width = Math.min(room, w.width * 0.40, h * 1.6);
-    if (width < 280 || h < 220) return;
+    var room = w.right - pad - widest + w.width * 0.18;   // background layer: may slide under the grey lines, its left edge fades out
+    var top = meta.getBoundingClientRect().top, h = l3.getBoundingClientRect().bottom - top;
+    var width = Math.min(room, w.width * 0.56, h * 1.5);
+    if (width < 320 || h < 260) return;
     fig.classList.add('side');
     fig.style.top = (top - w.top) + 'px';
     fig.style.right = pad + 'px';
