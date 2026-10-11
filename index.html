@@ -1433,6 +1433,22 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 })();
 </script>
 <script>
+/* every "contact" button lands directly on the open form */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href="#kontakt"]'); if (!a) return;
+    var f = document.getElementById('form'), b = document.getElementById('openForm'), g = document.querySelector('.contact-grid');
+    if (!f || !g) return;
+    e.preventDefault();
+    if (f.hidden){ f.hidden = false; if (b){ b.setAttribute('aria-expanded', true); b.parentNode.hidden = true; } }
+    g.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+    if (history.replaceState) history.replaceState(null, '', '#kontakt');
+    if (matchMedia('(pointer: fine)').matches) setTimeout(function(){ var n = document.getElementById('f-name'); if (n) n.focus({preventScroll: true}); }, reduce ? 0 : 700);
+  });
+})();
+</script>
+<script>
 /* typewriter intro: types the hero headline line by line, then the three mono lines; runs once on load */
 (function(){
   var root = document.documentElement;
