@@ -447,6 +447,78 @@ p{margin:0}
 .form-note.show{color:var(--ink)}
 @media (max-width:560px){.form{grid-template-columns:1fr}}
 
+/* ---------- Magic UI ports ----------
+   Bento grid, animated beam and border beam are vanilla CSS/JS ports of patterns from
+   Magic UI (https://magicui.design), MIT License, Copyright (c) 2023 Magic UI.
+   Rule: motion only where it shows a real state (data flow, pointer, open contact), never decoration. */
+
+/* bento: the three disciplines as tiles; the cursor spotlight follows the pointer */
+.disc-list.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;border-top:1px solid var(--ink);padding:0 1px 1px}
+.bento .disc{display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.6vw,40px);border:0;outline:1px solid var(--line);background:var(--white);min-height:300px;overflow:hidden;isolation:isolate}
+.bento .disc:nth-child(1){grid-column:span 4}
+.bento .disc:nth-child(2){grid-column:span 2;grid-row:span 2}
+.bento .disc:nth-child(3){grid-column:span 4}
+.bento .disc::before{top:0;height:2px;background:var(--accent);z-index:1}
+.bento .disc::after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(17,17,17,.045),transparent 60%)}
+.bento .disc:hover::after{opacity:1}
+.bento .disc-idx{padding-top:0}
+.bento .disc h3{font-size:clamp(26px,2.6vw,40px)}
+.bento .disc-body{margin-top:auto;padding-top:0}
+.bento .disc-arr{position:absolute;top:clamp(24px,2.6vw,40px);right:clamp(24px,2.6vw,40px);padding:0}
+.bento .disc:nth-child(1) .disc-body,.bento .disc:nth-child(3) .disc-body{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px}
+.bento .disc:nth-child(1) .disc-body p,.bento .disc:nth-child(3) .disc-body p{flex:1 1 50%}
+.bento .disc:nth-child(1) .tags,.bento .disc:nth-child(3) .tags{flex:1 1 40%;justify-content:flex-end}
+@media (max-width:1100px){.bento .disc:nth-child(1) .disc-body,.bento .disc:nth-child(3) .disc-body{flex-direction:column;align-items:stretch;gap:18px}.bento .disc:nth-child(1) .tags,.bento .disc:nth-child(3) .tags{justify-content:flex-start}}
+@media (max-width:820px){.disc-list.bento{grid-template-columns:1fr}.bento .disc:nth-child(n){grid-column:auto;grid-row:auto;min-height:0}.bento .disc h3{transform:none}.bento .disc-arr{display:none}}
+
+/* animated beam: data flow sources -> ASEIO -> marketplaces */
+.dflow{margin-top:clamp(48px,6vw,88px);border-top:1px solid var(--ink);padding-top:24px}
+.dflow-head{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+.dflow-head span:nth-child(2){color:var(--ink)}
+.dflow-head span:last-child{text-align:right}
+.dflow-stage{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) auto minmax(0,1.3fr) minmax(0,1fr);align-items:center}
+.dflow-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.dflow-svg .base{fill:none;stroke:#DADCDF;stroke-width:1}
+.dflow-svg .beam{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:9 91;stroke-dashoffset:9;opacity:0}
+.dflow.run .dflow-svg .beam{opacity:1;animation:beam 2.6s cubic-bezier(.45,0,.55,1) infinite}
+.dflow.run .dflow-svg .beam.out{animation-delay:calc(var(--d,0s) + 1.3s)}
+.dflow-svg .base.hot{stroke:var(--ink)}
+@keyframes beam{from{stroke-dashoffset:9}to{stroke-dashoffset:-91}}
+.dflow-col{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.dflow-col.src{grid-column:1;align-items:flex-start}.dflow-col.dst{grid-column:5;align-items:flex-end}
+.dflow-col li{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.02em;padding:7px 12px;border:1px solid var(--line);background:var(--white);color:var(--graphite);border-radius:2px;white-space:nowrap;cursor:default;transition:border-color .25s,color .25s}
+.dflow-col li:hover,.dflow-col li.hot{border-color:var(--ink);color:var(--ink)}
+.dflow-hub{grid-column:3;position:relative;z-index:1;background:var(--ink);color:var(--white);padding:22px 26px;display:flex;flex-direction:column;align-items:center;gap:6px;border-radius:2px}
+.dflow-hub b{font-size:22px;letter-spacing:.12em;font-weight:700}
+.dflow-hub small{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--soft);text-transform:uppercase;text-align:center}
+.dflow-hub i{position:absolute;top:10px;right:10px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.dflow.run .dflow-hub i{animation:hubpulse 1.3s ease-in-out infinite}
+@keyframes hubpulse{0%,100%{opacity:.35}50%{opacity:1}}
+.dflow-cap{margin-top:20px;color:var(--muted);font-size:14px;max-width:46em}
+@media (max-width:700px){
+  .dflow-head{font-size:10px;gap:8px}
+  .dflow-stage{grid-template-columns:minmax(0,1fr) 18px auto 18px minmax(0,1fr)}
+  .dflow-col{gap:8px}
+  .dflow-col li{font-size:10.5px;padding:5px 7px}
+  .dflow-hub{padding:14px 10px;writing-mode:vertical-rl;transform:rotate(180deg)}
+  .dflow-hub b{font-size:15px}.dflow-hub small{display:none}
+  .dflow-hub i{top:auto;bottom:8px;right:auto;left:8px}
+}
+@media (prefers-reduced-motion:reduce){.dflow.run .dflow-svg .beam{animation:none;opacity:0}.dflow-svg .base{stroke:#BFC2C6}.dflow.run .dflow-hub i{animation:none}}
+
+/* border beam: a red segment runs around the contact card */
+@property --bb{syntax:'<angle>';inherits:false;initial-value:0deg}
+.contact-card{position:relative;border:1px solid var(--line);border-top:1px solid var(--line);padding:6px 24px;background:var(--white)}
+.contact-card div:last-child{border-bottom:0}
+.contact-card::after{content:"";position:absolute;inset:-1px;padding:1.5px;border-radius:inherit;pointer-events:none;
+  background:conic-gradient(from var(--bb),transparent 0deg 300deg,rgba(213,43,30,.15) 320deg,var(--accent) 352deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:bb 6s linear infinite}
+.contact-card:hover::after{animation-duration:3s}
+@keyframes bb{to{--bb:360deg}}
+@media (max-width:560px){.contact-card{padding:4px 16px}.contact-card div{grid-template-columns:70px minmax(0,1fr) auto}}
+@media (prefers-reduced-motion:reduce){.contact-card::after{animation:none;background:none}.contact-card{border-color:var(--ink)}}
+
 /* ---------- footer ---------- */
 .footer{border-top:1px solid var(--ink);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
 .footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;color:var(--muted)}
@@ -600,7 +672,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       <h2 class="reveal" data-en="Three disciplines.<br><span class='dim'>One approach.</span>">Drei Disziplinen.<br><span class="dim">Ein Ansatz.</span></h2>
     </div>
 
-    <div class="disc-list">
+    <div class="disc-list bento">
       <article class="disc reveal">
         <div class="disc-idx mono">01 /</div>
         <h3 data-en="Marketplace<br>Operations">Marktplatz-<br>Management</h3>
@@ -833,6 +905,16 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li>FTP <span class="k" data-en="transfer">transfer</span></li>
         </ul>
       </div>
+    </div>
+    <div class="dflow reveal" id="dataflow" role="img" aria-label="Datenfluss: Quellsysteme liefern Produktdaten an ASEIO, ASEIO spielt sie auf die Marktplätze aus." data-en-aria="Data flow: source systems feed product data into ASEIO, ASEIO publishes it to the marketplaces.">
+      <div class="dflow-head mono"><span data-en="Sources">Quellen</span><span data-en="Processing">Verarbeitung</span><span data-en="Marketplaces">Marktplätze</span></div>
+      <div class="dflow-stage">
+        <svg class="dflow-svg" aria-hidden="true"></svg>
+        <ul class="dflow-col src" aria-hidden="true"><li>PlentyOne</li><li>JTL-Wawi</li><li>Weclapp</li><li>Shopify</li><li>Icecat</li></ul>
+        <div class="dflow-hub" aria-hidden="true"><i></i><b>ASEIO</b><small data-en="AI · product data">KI · Produktdaten</small></div>
+        <ul class="dflow-col dst" aria-hidden="true"><li>Amazon</li><li>eBay</li><li>OTTO</li><li>Kaufland</li><li>Temu</li></ul>
+      </div>
+      <p class="dflow-cap" data-en="This is how data runs in ASEIO: product data from ERP, shop and data sources is enriched, checked and published to the marketplaces.">So läuft der Datenfluss in ASEIO: Produktdaten aus ERP, Shop und Datenquellen werden angereichert, geprüft und auf die Marktplätze ausgespielt.</p>
     </div>
     <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce and Data &amp; Analytics list the platforms and systems I know operationally and integrate with. Many of these connections run in production in my software <a href='https://aseio.app' target='_blank' rel='noopener'>ASEIO</a>.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce und Daten &amp; Analyse beschreiben die Plattformen und Systeme, die ich operativ kenne und anbinde. Viele dieser Anbindungen laufen produktiv in meiner Software <a href="https://aseio.app" target="_blank" rel="noopener">ASEIO</a>.</p>
   </div>
@@ -1261,6 +1343,59 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   function show(){ fig.classList.add('in'); }
   if (document.documentElement.classList.contains('tw-init')) { document.addEventListener('tw:done', show); setTimeout(show, 9000); }
   else setTimeout(show, 200);
+})();
+</script>
+<script>
+/* Magic UI ports (MIT, magicui.design): bento spotlight + animated beam. Vanilla, no dependencies. */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* bento spotlight follows the pointer */
+  document.querySelectorAll('.bento .disc').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect();
+      c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+  /* animated beam: curves from each source into ASEIO and out to each marketplace */
+  var flow = document.getElementById('dataflow'); if (!flow) return;
+  var svg = flow.querySelector('.dflow-svg'), stage = flow.querySelector('.dflow-stage'), hub = flow.querySelector('.dflow-hub');
+  var NS = 'http://www.w3.org/2000/svg', pairs = [];
+  function draw(){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    pairs = [];
+    var S = stage.getBoundingClientRect(), H = hub.getBoundingClientRect();
+    svg.setAttribute('viewBox', '0 0 ' + S.width + ' ' + S.height);
+    function add(li, out, i){
+      var r = li.getBoundingClientRect(), x1, y1, x2, y2;
+      if (!out){ x1 = r.right - S.left; y1 = r.top + r.height/2 - S.top; x2 = H.left - S.left; y2 = H.top + H.height/2 - S.top; }
+      else { x1 = H.right - S.left; y1 = H.top + H.height/2 - S.top; x2 = r.left - S.left; y2 = r.top + r.height/2 - S.top; }
+      var mx = (x1 + x2) / 2, d = 'M' + x1 + ',' + y1 + ' C' + mx + ',' + y1 + ' ' + mx + ',' + y2 + ' ' + x2 + ',' + y2;
+      var base = document.createElementNS(NS, 'path'); base.setAttribute('d', d); base.setAttribute('class', 'base');
+      var beam = document.createElementNS(NS, 'path'); beam.setAttribute('d', d); beam.setAttribute('pathLength', '100');
+      beam.setAttribute('class', 'beam' + (out ? ' out' : ''));
+      beam.style.setProperty('--d', (i * 0.52) + 's'); beam.style.animationDelay = out ? '' : (i * 0.52) + 's';
+      svg.appendChild(base); svg.appendChild(beam);
+      pairs.push({li: li, base: base});
+    }
+    flow.querySelectorAll('.src li').forEach(function(li, i){ add(li, false, i); });
+    flow.querySelectorAll('.dst li').forEach(function(li, i){ add(li, true, i); });
+  }
+  /* hovering a system highlights its connection */
+  flow.addEventListener('pointerover', function(e){
+    var li = e.target.closest('.dflow-col li');
+    pairs.forEach(function(p){ var on = p.li === li; p.base.classList.toggle('hot', on); });
+  });
+  flow.addEventListener('pointerleave', function(){ pairs.forEach(function(p){ p.base.classList.remove('hot'); }); });
+  var t; addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(draw, 120); });
+  document.addEventListener('click', function(e){ if (e.target.closest('[data-lang]')) setTimeout(draw, 60); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+  /* beams run only while the diagram is on screen */
+  if (reduce) return;
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ en.forEach(function(x){ flow.classList.toggle('run', x.isIntersecting); }); }, {threshold:0.2}).observe(flow);
+  } else flow.classList.add('run');
 })();
 </script>
 <script>
