@@ -991,8 +991,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     <div class="contact-grid">
       <div class="contact-main">
         <p data-en="Do you have a project, a challenge, or want to make your e-commerce processes more efficient? Let’s talk.">Sie haben ein Projekt, eine Herausforderung oder möchten Ihre E-Commerce-Prozesse effizienter gestalten? Lassen Sie uns sprechen.</p>
-        <div><button class="btn btn-primary" id="openForm" aria-expanded="false" aria-controls="form"><span data-en="Request a project">Projekt anfragen</span> <span class="arr" aria-hidden="true">→</span></button></div>
-        <form class="form" id="form" hidden novalidate>
+        <form class="form" id="form" novalidate>
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name"></div>
           <div class="field"><label for="f-company" data-en="Company">Unternehmen</label><input id="f-company" name="company" autocomplete="organization"></div>
           <div class="field"><label for="f-mail" data-en="Email">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
@@ -1257,7 +1256,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 
   /* contact */
   var openBtn = document.getElementById('openForm'), form = document.getElementById('form'), note = document.getElementById('formNote');
-  openBtn.addEventListener('click', function(){
+  if (openBtn) openBtn.addEventListener('click', function(){
     form.hidden = !form.hidden;
     openBtn.setAttribute('aria-expanded', !form.hidden);
     if (!form.hidden) document.getElementById('f-name').focus();
