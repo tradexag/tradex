@@ -266,6 +266,7 @@ p{margin:0}
 .brands li{font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--graphite);white-space:nowrap;padding:4px 18px 4px 0;transition:color .3s}
 .brands li + li{padding-left:18px;border-left:1px solid var(--line)}
 .brands li:hover{color:var(--ink)}
+.brands .brands-own{margin-bottom:0}
 .brands li a{color:inherit;border-bottom:1px solid var(--accent)}
 .stack-note a{border-bottom:1px solid var(--accent)}
 @media (max-width:820px){.brands{grid-column:1 / -1}}
@@ -520,6 +521,20 @@ p{margin:0}
 @media (max-width:560px){.contact-card{padding:4px 16px}.contact-card div{grid-template-columns:70px minmax(0,1fr) auto}}
 @media (prefers-reduced-motion:reduce){.contact-card::after{animation:none;background:none}.contact-card{border-color:var(--ink)}}
 
+/* terminal opens on Lars's desk photo, then a red scan line wipes it away to the console */
+.terminal{position:relative}
+.term-photo{position:absolute;inset:0;z-index:5;background:var(--ink);overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path 1.2s var(--ease)}
+.term-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 26%;transform:scale(1.04);animation:tpzoom 6s ease-out both}
+@keyframes tpzoom{from{transform:scale(1.12)}to{transform:scale(1.04)}}
+.term-photo .tp-scan{position:absolute;left:0;right:0;top:0;height:2px;background:var(--accent);box-shadow:0 0 12px var(--accent);opacity:0}
+.term-photo.off{clip-path:inset(100% 0 0 0)}
+.term-photo.off .tp-scan{animation:tpscan 1.2s var(--ease) forwards}
+@keyframes tpscan{0%{top:0;opacity:1}100%{top:100%;opacity:1}}
+.term-photo .tp-cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:14px 18px;font-size:10px;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(17,17,17,.75))}
+.term-photo .tp-cap i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
+@media (prefers-reduced-motion:reduce){.term-photo{display:none}}
+.portrait .vign{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(rgba(0,0,0,.6),transparent 20%,transparent 74%,rgba(0,0,0,.72))}
+.portrait .ph,.portrait .ph-top,.portrait .corner{z-index:2}
 /* ---------- footer ---------- */
 .footer{border-top:1px solid var(--ink);padding-block:28px calc(28px + env(safe-area-inset-bottom,0px))}
 .footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;color:var(--muted)}
@@ -626,13 +641,6 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       <span class="l3" aria-hidden="true" data-en="I <span class='verb' id='verb'>engineer</span> it.<i class='caret'></i>">Ich <span class="verb" id="verb">entwickle</span> ihn.<i class="caret"></i></span>
     </h1>
 
-    <figure class="hero-photo" id="heroPhoto" aria-hidden="true">
-      <img src="/assets/lars-schreibtisch-1200.jpg" srcset="/assets/lars-schreibtisch-700.jpg 700w, /assets/lars-schreibtisch-1200.jpg 1200w" sizes="(max-width: 900px) 100vw, 40vw" width="1086" height="868" alt="" decoding="async">
-      <span class="hp-scan"></span>
-      <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-      <figcaption class="mono"><span><i></i>build · optimize · scale · repeat</span><span>/lars</span></figcaption>
-    </figure>
-
     <div class="hero-grid">
       <div class="hero-copy">
         <p class="hero-sub" data-en="<span>Marketplace Operations.</span><span>E-Commerce Strategy.</span><span>Software Engineering.</span>"><span>Marktplatz-Management.</span><span>E-Commerce-Strategie.</span><span>Softwareentwicklung.</span></p>
@@ -645,6 +653,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 
       <div class="terminal-col">
         <div class="terminal" role="img" aria-label="Animiertes Terminal: ein Listing-Abgleich läuft durch Daten, Automatisierung und Ausführung, mit menschlicher Freigabe vor der Übermittlung." data-en-aria="Animated terminal: a listing sync runs through data, automation and execution, with human approval before submission.">
+          <div class="term-photo" id="termPhoto" aria-hidden="true"><img src="/assets/lars-schreibtisch-hoch.jpg" srcset="/assets/lars-schreibtisch-hoch-700.jpg 700w, /assets/lars-schreibtisch-hoch.jpg 1086w" sizes="(max-width: 960px) 100vw, 45vw" width="1086" height="1448" alt="" decoding="async"><span class="tp-scan"></span><span class="tp-cap mono"><span><i></i>build · optimize · scale · repeat</span><span>/lars</span></span></div>
           <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>tradex — console</span><span data-en="example">beispiel</span></div>
           <div class="term-body" id="termBody"></div>
           <div class="flow" id="flow">
@@ -717,8 +726,9 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li>BYODO</li>
           <li>NATURES FINEST</li>
           <li>HOTGEN</li>
-          <li><a href="https://aseio.app" target="_blank" rel="noopener">ASEIO.APP <span aria-hidden="true">↗</span></a></li>
         </ul>
+        <span class="mono" data-en="Own software solution">Eigene Softwarelösung</span>
+        <ul class="brands-own"><li><a href="https://aseio.app" target="_blank" rel="noopener">ASEIO.APP <span aria-hidden="true">↗</span></a></li></ul>
       </div>
       <div class="statement-foot reveal d1">
         <div><span class="mono" data-en="I don’t just solve problems.">Ich löse Probleme nicht nur.</span><p data-en="Every recurring task is a candidate for standardisation.">Jede wiederkehrende Aufgabe ist ein Kandidat für Standardisierung.</p></div>
@@ -733,10 +743,11 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   <div class="wrap founder-grid">
     <aside class="portrait-col">
       <div class="portrait">
-        <img src="/assets/lars-orlamuende.jpg" width="1200" height="1500" loading="lazy" decoding="async" alt="Lars Orlamünde, Founder &amp; CEO der TradeX International AG, als Raster-Grafik" data-en-alt="Lars Orlamünde, Founder &amp; CEO of TradeX International AG, as a halftone graphic">
+        <img src="/assets/lars-schreibtisch-hoch.jpg" srcset="/assets/lars-schreibtisch-hoch-700.jpg 700w, /assets/lars-schreibtisch-hoch.jpg 1086w" sizes="(max-width: 960px) 100vw, 45vw" width="1086" height="1448" alt="Lars Orlamünde, Founder &amp; CEO der TradeX International AG, am Schreibtisch" data-en-alt="Lars Orlamünde, Founder &amp; CEO of TradeX International AG, at his desk" style="object-position:50% 22%">
         <span class="shade" aria-hidden="true"></span>
+        <span class="vign" aria-hidden="true"></span>
         <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
-        <div class="ph-top mono" aria-hidden="true"><span class="rec"><i></i>Live</span><span data-en="halftone · 10px">Raster · 6px</span></div>
+        <div class="ph-top mono" aria-hidden="true"><span class="rec"><i></i>Live</span><span data-en="Office">Büro</span></div>
         <div class="ph mono" aria-hidden="true"><span>Lars Orlamünde</span><span>Founder &amp; CEO</span></div>
       </div>
       <dl class="spec">
@@ -1402,6 +1413,23 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(en){ en.forEach(function(x){ flow.classList.toggle('run', x.isIntersecting); }); }, {threshold:0.2}).observe(flow);
   } else flow.classList.add('run');
+})();
+</script>
+<script>
+/* terminal box: show the photo once, then wipe to the console when the headline is typed and the box is in view */
+(function(){
+  var ph = document.getElementById('termPhoto'); if (!ph) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches){ ph.hidden = true; return; }
+  var typed = !document.documentElement.classList.contains('tw-init'), seen = false, gone = false;
+  function go(){
+    if (gone || !typed || !seen) return; gone = true;
+    setTimeout(function(){ ph.classList.add('off'); setTimeout(function(){ ph.hidden = true; }, 1300); }, 2200);
+  }
+  document.addEventListener('tw:done', function(){ typed = true; go(); });
+  setTimeout(function(){ typed = true; go(); }, 9000);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(en, o){ en.forEach(function(x){ if (x.isIntersecting){ seen = true; o.disconnect(); go(); } }); }, {threshold:0.4}).observe(ph);
+  } else { seen = true; go(); }
 })();
 </script>
 <script>
