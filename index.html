@@ -1416,14 +1416,14 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 })();
 </script>
 <script>
-/* terminal box: show the photo once, then wipe to the console when the headline is typed and the box is in view */
+/* terminal box: flash the photo briefly once the box is in view, then wipe to the console */
 (function(){
   var ph = document.getElementById('termPhoto'); if (!ph) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches){ ph.hidden = true; return; }
-  var typed = !document.documentElement.classList.contains('tw-init'), seen = false, gone = false;
+  var typed = true, seen = false, gone = false;
   function go(){
     if (gone || !typed || !seen) return; gone = true;
-    setTimeout(function(){ ph.classList.add('off'); setTimeout(function(){ ph.hidden = true; }, 1300); }, 2200);
+    setTimeout(function(){ ph.classList.add('off'); setTimeout(function(){ ph.hidden = true; }, 1300); }, 900);
   }
   document.addEventListener('tw:done', function(){ typed = true; go(); });
   setTimeout(function(){ typed = true; go(); }, 9000);
