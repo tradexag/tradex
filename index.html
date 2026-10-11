@@ -174,7 +174,7 @@ p{margin:0}
 .term-cmd{white-space:nowrap;color:#FFFFFF}
 .term-cmd .prompt{color:var(--ink-muted)}
 .term-done{color:var(--ink-muted);margin:4px 0 10px;white-space:nowrap}
-.hero-title .verb{display:inline-block;transition:opacity .26s var(--ease),transform .26s var(--ease)}
+.hero-title .verb{display:inline}
 @media (max-width:560px){html[lang="de"] .hero-title .l3{min-height:1.84em}}
 .hero-title .verb.out{opacity:0;transform:translateY(-.18em)}
 /* hero photo: sits in the free space right of the short headline lines; JS sizes it, CSS animates it */
@@ -1163,8 +1163,12 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     var v = document.getElementById('verb'); if (!v) return;
     var word = MODES[mode].verb[lang];
     if (!animate || reduce){ v.textContent = word; return; }
-    v.classList.add('out');
-    later(function(){ v.textContent = word; v.classList.remove('out'); }, 260);
+    /* typed swap: delete the old verb letter by letter, then type the new one */
+    var cur = v.textContent, at = 0;
+    function show(s){ return function(){ v.textContent = s; }; }
+    for (var k = cur.length - 1; k >= 0; k--){ later(show(cur.slice(0, k)), at); at += 45; }
+    at += 180;
+    for (var j = 1; j <= word.length; j++){ later(show(word.slice(0, j)), at); at += 80; }
   }
   function lineHTML(l, state){
     var st = state === 'ok' ? '<span class="st ok">ok</span>' : '<span class="st wait">' + (l[0] === 'review' ? 'review' : 'run') + '</span>';
