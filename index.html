@@ -262,6 +262,8 @@ p{margin:0}
 .brands li{font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--graphite);white-space:nowrap;padding:4px 18px 4px 0;transition:color .3s}
 .brands li + li{padding-left:18px;border-left:1px solid var(--line)}
 .brands li:hover{color:var(--ink)}
+.brands li a{color:inherit;border-bottom:1px solid var(--accent)}
+.stack-note a{border-bottom:1px solid var(--accent)}
 @media (max-width:820px){.brands{grid-column:1 / -1}}
 .statement-foot{grid-column:4 / span 9;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:24px;margin-top:16px}
 .statement-foot div{display:flex;flex-direction:column;gap:6px}
@@ -359,7 +361,8 @@ p{margin:0}
 .key{width:10px;height:10px;display:inline-block;flex:none}
 .key.used{background:var(--ink)}
 .key.platform{border:1px solid var(--ink)}
-.stack-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.stack-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+@media (max-width:1200px) and (min-width:961px){.stack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stack-col:nth-child(3){padding-left:0;border-left:0}.stack-col:nth-child(n+3){border-top:1px solid var(--line)}}
 .stack-col{padding:24px 24px 8px 0;min-width:0}
 .stack-col + .stack-col{padding-left:24px;border-left:1px solid var(--line)}
 .stack-col header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
@@ -638,6 +641,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li>BYODO</li>
           <li>NATURES FINEST</li>
           <li>HOTGEN</li>
+          <li><a href="https://aseio.app" target="_blank" rel="noopener">ASEIO.APP <span aria-hidden="true">↗</span></a></li>
         </ul>
       </div>
       <div class="statement-foot reveal d1">
@@ -798,9 +802,10 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         </ul>
       </div>
       <div class="stack-col reveal d2">
-        <header><h3><i class="key platform"></i>Commerce</h3><span class="mono">09</span></header>
+        <header><h3><i class="key platform"></i>Commerce</h3><span class="mono">11</span></header>
         <ul>
           <li>Amazon SP-API <span class="k">api</span></li>
+          <li>Amazon Ads <span class="k">ads</span></li>
           <li>PlentyOne <span class="k">erp</span></li>
           <li>Shopify <span class="k">shop</span></li>
           <li>eBay <span class="k" data-en="marketplace">marktplatz</span></li>
@@ -809,10 +814,24 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li>Temu <span class="k" data-en="marketplace">marktplatz</span></li>
           <li>Mirakl <span class="k" data-en="integration">anbindung</span></li>
           <li>Weclapp <span class="k">erp</span></li>
+          <li>JTL-Wawi <span class="k">erp</span></li>
+        </ul>
+      </div>
+      <div class="stack-col reveal d3">
+        <header><h3><i class="key platform"></i><span data-en="Data &amp; Analytics">Daten &amp; Analyse</span></h3><span class="mono">08</span></header>
+        <ul>
+          <li>Icecat <span class="k" data-en="product data">produktdaten</span></li>
+          <li>DataNature <span class="k" data-en="product data">produktdaten</span></li>
+          <li>Ahrefs <span class="k">seo</span></li>
+          <li><span data-en="Google keyword data">Google Keyword-Daten</span> <span class="k">seo</span></li>
+          <li>PostHog <span class="k">analytics</span></li>
+          <li>OpenAI <span class="k" data-en="ai">ki</span></li>
+          <li>CSV / Excel <span class="k">import</span></li>
+          <li>FTP <span class="k" data-en="transfer">transfer</span></li>
         </ul>
       </div>
     </div>
-    <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce lists the platforms and systems I know operationally and integrate with.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce beschreibt die Plattformen und Systeme, die ich operativ kenne und anbinde.</p>
+    <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce and Data &amp; Analytics list the platforms and systems I know operationally and integrate with. Many of these connections run in production in my software <a href='https://aseio.app' target='_blank' rel='noopener'>ASEIO</a>.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce und Daten &amp; Analyse beschreiben die Plattformen und Systeme, die ich operativ kenne und anbinde. Viele dieser Anbindungen laufen produktiv in meiner Software <a href="https://aseio.app" target="_blank" rel="noopener">ASEIO</a>.</p>
   </div>
 </section>
 
