@@ -366,8 +366,7 @@ p{margin:0}
 .key{width:10px;height:10px;display:inline-block;flex:none}
 .key.used{background:var(--ink)}
 .key.platform{border:1px solid var(--ink)}
-.stack-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
-@media (max-width:1200px) and (min-width:961px){.stack-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stack-col:nth-child(3){padding-left:0;border-left:0}.stack-col:nth-child(n+3){border-top:1px solid var(--line)}}
+.stack-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
 .stack-col{padding:24px 24px 8px 0;min-width:0}
 .stack-col + .stack-col{padding-left:24px;border-left:1px solid var(--line)}
 .stack-col header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
@@ -904,21 +903,8 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li>JTL-Wawi <span class="k">erp</span></li>
         </ul>
       </div>
-      <div class="stack-col reveal d3">
-        <header><h3><i class="key platform"></i><span data-en="Data &amp; Analytics">Daten &amp; Analyse</span></h3><span class="mono">08</span></header>
-        <ul>
-          <li>Icecat <span class="k" data-en="product data">produktdaten</span></li>
-          <li>DataNature <span class="k" data-en="product data">produktdaten</span></li>
-          <li>Ahrefs <span class="k">seo</span></li>
-          <li><span data-en="Google keyword data">Google Keyword-Daten</span> <span class="k">seo</span></li>
-          <li>PostHog <span class="k">analytics</span></li>
-          <li>OpenAI <span class="k" data-en="ai">ki</span></li>
-          <li>CSV / Excel <span class="k">import</span></li>
-          <li>FTP <span class="k" data-en="transfer">transfer</span></li>
-        </ul>
-      </div>
     </div>
-    <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce and Data &amp; Analytics list the platforms and systems I know operationally and integrate with. Many of these connections run in production in my software <a href='https://aseio.app' target='_blank' rel='noopener'>ASEIO</a>.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce und Daten &amp; Analyse beschreiben die Plattformen und Systeme, die ich operativ kenne und anbinde. Viele dieser Anbindungen laufen produktiv in meiner Software <a href="https://aseio.app" target="_blank" rel="noopener">ASEIO</a>.</p>
+    <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce lists the platforms and systems I know operationally and integrate with. Many of these connections run in production in my software <a href='https://aseio.app' target='_blank' rel='noopener'>ASEIO</a>.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce beschreibt die Plattformen und Systeme, die ich operativ kenne und anbinde. Viele dieser Anbindungen laufen produktiv in meiner Software <a href="https://aseio.app" target="_blank" rel="noopener">ASEIO</a>.</p>
   </div>
 </section>
 
@@ -996,6 +982,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       <dl class="contact-card">
         <div><dt data-en="Company">Firma</dt><dd>TradeX International AG</dd><span></span></div>
         <div><dt data-en="Email">E-Mail</dt><dd><a href="mailto:lars@tradexag.ch" id="mail">lars@tradexag.ch</a></dd><button class="copy" id="copyMail" type="button" data-en="Copy">Kopieren</button></div>
+        <div><dt data-en="Phone">Telefon</dt><dd><a href="tel:+41772747579">+41 77 274 75 79</a></dd><span></span></div>
         <div><dt>Domain</dt><dd>tradexag.ch</dd><span></span></div>
       </dl>
     </div>
