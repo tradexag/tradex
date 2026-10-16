@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>secufox · Entwürfe</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'Geist';font-weight:400;font-display:swap;src:url(/assets/fonts/geist-sans-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-weight:600;font-display:swap;src:url(/assets/fonts/geist-sans-latin-600-normal.woff2) format('woff2')}
+:root{--ink:#111;--muted:#6A6E73;--line:#E8E8E8;--paper:#F8F9FA;--accent:#D52B1E;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--paper);color:var(--ink);font:16px/1.5 "Geist","Helvetica Neue",Arial,sans-serif;padding:24px max(16px,env(safe-area-inset-left,0px))}
+.box{width:100%;max-width:380px;background:#fff;border:1px solid var(--line);padding:32px;display:grid;gap:16px}
+.brand{font-weight:600;letter-spacing:-.01em}
+.brand span{color:var(--accent)}
+h1{font-size:1.35rem;font-weight:600;margin:0;letter-spacing:-.01em}
+p{margin:0;color:var(--muted);font-size:.93rem}
+label{display:grid;gap:6px;font-size:.88rem;font-weight:600}
+input{font:inherit;border:1px solid #cfd2d6;padding:11px 12px;width:100%;border-radius:0}
+input:focus{outline:2px solid var(--ink);outline-offset:1px}
+button{font:inherit;font-weight:600;background:var(--ink);color:#fff;border:0;padding:12px;cursor:pointer}
+button:hover{background:#303030}
+.err{color:var(--accent);font-size:.88rem;min-height:1.3em}
+</style>
+</head><body>
+<form class="box" id="f" autocomplete="off">
+  <div class="brand">TradeX<span>.</span></div>
+  <h1>Entwürfe für secufox</h1>
+  <p>Dieser Bereich ist geschützt. Bitte geben Sie das Zugangspasswort ein.</p>
+  <label for="pw">Zugangspasswort<input id="pw" type="password" autofocus></label>
+  <button type="submit">Öffnen</button>
+  <div class="err" id="err" role="alert"></div>
+</form>
+<script type="application/json" id="payload">{"s": "SkGnASC3NP0pusO38ZDSKA==", "i": "AjsTHYX4UWyNqHUG", "c": "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", "n": 250000}</script>
+<script>
+(function(){
+  var KEY='tradex-secufox-pw';
+  var data=JSON.parse(document.getElementById('payload').textContent);
+  function b64(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})}
+  async function open(pw){
+    var enc=new TextEncoder();
+    var base=await crypto.subtle.importKey('raw',enc.encode(pw.trim().toLowerCase()),'PBKDF2',false,['deriveKey']);
+    var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(data.s),iterations:data.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    var plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(data.i)},key,b64(data.c));
+    try{sessionStorage.setItem(KEY,pw)}catch(e){}
+    var html=new TextDecoder().decode(plain);
+    document.open();document.write(html);document.close();
+  }
+  var saved=null;try{saved=sessionStorage.getItem(KEY)}catch(e){}
+  if(saved){open(saved).catch(function(){try{sessionStorage.removeItem(KEY)}catch(e){}})}
+  document.getElementById('f').addEventListener('submit',function(e){
+    e.preventDefault();var err=document.getElementById('err');err.textContent='';
+    open(document.getElementById('pw').value).catch(function(){err.textContent='Das Passwort stimmt nicht. Bitte noch einmal versuchen.'});
+  });
+})();
+</script>
+</body></html>
