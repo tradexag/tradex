@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>/crew · KI-Team mit Charakter · TradeX International AG</title>
+<meta name="description" content="/crew ist ein kostenloser Skill für Claude Code: Jede Aufgabe bekommt eine Nummer und eine Figur aus einem Thema deiner Wahl. 12 Rollen, Open Source (MIT).">
+<link rel="canonical" href="https://tradexag.ch/crew/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tradexag.ch/crew/">
+<meta property="og:title" content="/crew — dein KI-Team mit Charakter">
+<meta property="og:description" content="Jede Aufgabe bekommt eine Nummer und eine Figur. Thema frei wählbar, 12 Rollen, kostenlos und Open Source.">
+<meta property="og:image" content="https://tradexag.ch/crew/og-crew.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>@font-face{font-family:'Geist';font-weight:400;font-display:swap;src:url(/assets/fonts/geist-sans-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Geist';font-weight:500;font-display:swap;src:url(/assets/fonts/geist-sans-latin-500-normal.woff2) format('woff2')}@font-face{font-family:'Geist';font-weight:700;font-display:swap;src:url(/assets/fonts/geist-sans-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-weight:400;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2')}
+:root{--ink:#111;--graphite:#303030;--muted:#6A6E73;--line:#E8E8E8;--paper:#F8F9FA;--accent:#D52B1E;--gutter:clamp(16px,4vw,48px)}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Geist","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+header,main,footer{max-width:1000px;margin-inline:auto;padding-inline:var(--gutter)}
+header{display:flex;justify-content:space-between;align-items:center;height:64px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;letter-spacing:.06em}
+.logo svg{width:22px;height:22px}
+.switch{display:flex;gap:4px}
+.switch button{font:inherit;background:none;border:1px solid var(--line);padding:6px 10px;cursor:pointer;color:var(--muted)}
+.switch button[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
+main{padding-top:56px;padding-bottom:80px}
+.label{display:flex;align-items:center;gap:10px;color:var(--muted);margin-bottom:20px}
+.sq{display:inline-block;width:8px;height:8px;background:var(--accent)}
+h1{font-size:clamp(38px,7vw,72px);line-height:1;letter-spacing:-.04em;margin:0 0 24px}
+h1 .dim{color:#A4A8AD}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;letter-spacing:-.02em;margin:64px 0 18px}
+p{margin:0 0 14px}
+.lead{font-size:clamp(18px,2vw,22px);line-height:1.5;color:var(--graphite);max-width:36em}
+.btn{display:inline-flex;align-items:center;gap:12px;height:52px;padding-inline:24px;font-size:15px;font-weight:500;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:#fff;text-decoration:none}
+.btn:hover{background:var(--graphite)}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin:28px 0 0}
+.cta .mono{color:var(--muted)}
+figure{margin:48px 0 0}
+figure img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+figcaption{margin-top:10px;color:var(--muted)}
+.points{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;border-top:1px solid var(--ink)}
+.points li{padding:18px 0;border-bottom:1px solid var(--line);color:var(--graphite)}
+.points b{display:block;color:var(--ink);font-weight:600}
+pre{margin:0 0 14px;background:var(--ink);color:#F2F2F2;padding:18px 20px;border-radius:4px;overflow-x:auto;font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:14px;line-height:1.6}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.9em}
+p code,td code{background:var(--paper);border:1px solid var(--line);padding:1px 6px;border-radius:3px}
+.note{color:var(--muted);font-size:15px}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;border-top:1px solid var(--ink)}
+th,td{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:400}
+td:first-child{white-space:nowrap}
+.roles{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.roles li{border:1px solid var(--line);padding:6px 12px;font-size:15px}
+.final{margin-top:72px;padding-top:32px;border-top:1px solid var(--ink)}
+footer{border-top:1px solid var(--line);padding-block:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted)}
+footer nav{display:flex;gap:20px}
+footer a{text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+@media (max-width:700px){.points{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/" aria-label="TradeX International AG, Startseite"><svg viewBox="0 0 22 22" aria-hidden="true"><rect width="22" height="22" fill="#111111"/><path d="M6.5 6.5 L15.5 15.5 M15.5 6.5 L6.5 15.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="square"/></svg><span>TRADEX</span></a>
+  <div class="switch mono" role="group" aria-label="Sprache / Language"><button type="button" data-set="de">DE</button><button type="button" data-set="en">EN</button></div>
+</header>
+<main>
+
+<div data-l="de">
+<div class="label mono"><i class="sq"></i>Skill für Claude Code · /crew</div>
+<h1>/crew — dein KI-Team<br><span class="dim">mit Charakter.</span></h1>
+<p class="lead">Jede Aufgabe bekommt eine Nummer und eine Figur. Du wählst ein Thema, zum Beispiel die Simpsons, 80er-Serien oder Fussball-Legenden. Claude stellt 12 Figuren mit Rolle und festem Charakter zusammen, und ab dann erledigt jede Aufgabe „jemand“: Homer nimmt die Bugs, Mr. Burns die Preise, Lisa die Recherche.</p>
+<div class="cta"><a class="btn" href="https://github.com/tradexag/crew" rel="noopener">Auf GitHub ansehen <span aria-hidden="true">→</span></a><span class="mono">Kostenlos, Open Source (MIT) · TradeX International AG</span></div>
+<figure><img src="crew-lineup.png" width="2240" height="1360" alt="Terminal mit /crew theme The Simpsons: 12 Figuren mit Rolle und Signatur, darunter Ticket #42, das Homer bearbeitet." decoding="async"><figcaption class="mono">Beispiel: Thema „The Simpsons“</figcaption></figure>
+
+<h2>Was es bringt</h2>
+<ul class="points">
+  <li><b>Jede Aufgabe hat eine Nummer.</b>Gibt es im Repo ein Ticket-Board, folgt /crew dessen Regeln. Sonst zählt es selbst.</li>
+  <li><b>Du siehst, wer woran arbeitet.</b>Übergaben sind ausdrücklich: „Homer übergibt an Comic Book Guy.“</li>
+  <li><b>Die Crew bleibt.</b>Sie wird gespeichert, damit jede Figur morgen gleich klingt.</li>
+  <li><b>Der Stil färbt nur den Ton, nie den Inhalt.</b>Ergebnis zuerst, Fakten vollständig, höchstens ein, zwei Sätze in der Rolle.</li>
+  <li><b>Kein Rollenspiel, wo es nicht hingehört.</b>Commits, PRs, Code und Kundentexte tragen nur die Nummer.</li>
+  <li><b>Deine Regeln bleiben.</b>Review, Freigabe und Deploy laufen wie bisher.</li>
+</ul>
+
+<h2>Installation</h2>
+<p>Als Claude-Code-Plugin (empfohlen):</p>
+<pre><code>/plugin marketplace add tradexag/crew
+/plugin install crew@tradexag</code></pre>
+<p>Oder als einfacher Skill, in einer Zeile:</p>
+<pre><code>mkdir -p ~/.claude/skills/crew &amp;&amp; curl -fsSL https://raw.githubusercontent.com/tradexag/crew/main/skills/crew/SKILL.md -o ~/.claude/skills/crew/SKILL.md</code></pre>
+<p class="note">Nur für ein Projekt: <code>.claude/skills/crew/</code> im Repo statt <code>~/.claude/skills/crew/</code>. Auf claude.ai: <code>skills/crew/SKILL.md</code> in einem Ordner <code>crew/</code> zippen und unter Einstellungen → Fähigkeiten → Skills hochladen.</p>
+
+<h2>Befehle</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Befehl</th><th>Was passiert</th></tr></thead>
+  <tbody>
+    <tr><td><code>/crew theme The Simpsons</code></td><td>Claude besetzt 12 Figuren, zeigt die Tabelle und speichert sie</td></tr>
+    <tr><td><code>/crew &lt;Aufgabe&gt;</code></td><td>vergibt die nächste Nummer und die passende Figur, startet die Arbeit</td></tr>
+    <tr><td><code>/crew &lt;Name&gt; &lt;Aufgabe&gt;</code></td><td>gibt die Aufgabe dieser Figur</td></tr>
+    <tr><td><code>/crew &lt;Name&gt;</code></td><td>diese Figur berichtet über ihre offenen Tickets</td></tr>
+    <tr><td><code>/crew</code></td><td>Aufstellung: wer woran arbeitet</td></tr>
+    <tr><td><code>/crew swap Homer Moe</code></td><td>ersetzt eine Figur, die Rolle bleibt</td></tr>
+  </tbody>
+</table></div>
+<p class="note">Es gibt kein Standard-Thema: Beim ersten <code>/crew</code> fragt Claude nach einem. Claude antwortet in deiner Sprache.</p>
+
+<h2>Die 12 Rollen</h2>
+<ul class="roles"><li>Planung</li><li>Umsetzung</li><li>Review/Tests</li><li>Design/UI</li><li>Texte/Kommunikation</li><li>Doku/Gedächtnis</li><li>KI/Automatisierung</li><li>Sicherheit</li><li>Bugs/Störungen</li><li>Preise/Abrechnung</li><li>Recherche/Analyse</li><li>Daten/Importe</li></ul>
+
+<div class="final">
+<p class="lead">Zeig uns deine Crew: Eröffne ein Issue auf GitHub oder markiere TradeX AG auf LinkedIn.</p>
+<div class="cta"><a class="btn" href="https://github.com/tradexag/crew" rel="noopener">Auf GitHub ansehen <span aria-hidden="true">→</span></a><span class="mono">Kostenlos, Open Source (MIT) · TradeX International AG</span></div>
+</div>
+</div>
+
+<div data-l="en" hidden>
+<div class="label mono"><i class="sq"></i>Skill for Claude Code · /crew</div>
+<h1>/crew — give your AI<br><span class="dim">coding agent a team.</span></h1>
+<p class="lead">Every task gets a ticket number and a crew member. You pick a theme (The Simpsons, 80s TV shows, Pokémon, football legends, anything). Claude casts 12 characters, gives each one a role and a lasting personality, and from then on every task is handled by “someone”: Homer takes the bugs, Mr. Burns the pricing, Lisa the research.</p>
+<div class="cta"><a class="btn" href="https://github.com/tradexag/crew" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a><span class="mono">Free, open source (MIT) · TradeX International AG</span></div>
+<figure><img src="crew-lineup.png" width="2240" height="1360" alt="Terminal showing /crew theme The Simpsons: 12 characters with role and signature, followed by ticket #42 handled by Homer." loading="lazy" decoding="async"><figcaption class="mono">Example: theme “The Simpsons”</figcaption></figure>
+
+<h2>Why it helps</h2>
+<ul class="points">
+  <li><b>Every task has a number.</b>If the repo has a ticket board, /crew follows its rules. Otherwise it counts in its memory file.</li>
+  <li><b>You see who is on which ticket.</b>Handovers are explicit: “Homer hands over to Comic Book Guy.”</li>
+  <li><b>The crew is remembered.</b>So every character sounds the same tomorrow.</li>
+  <li><b>Style colours the tone, never the content.</b>Result first, facts complete, one or two in-character sentences at most.</li>
+  <li><b>No role-play where it doesn’t belong.</b>Commits, PRs, code and customer texts only carry the number.</li>
+  <li><b>It changes no rules.</b>Your review, approval and deploy rules apply as before.</li>
+</ul>
+
+<h2>Install</h2>
+<p>Claude Code plugin (recommended):</p>
+<pre><code>/plugin marketplace add tradexag/crew
+/plugin install crew@tradexag</code></pre>
+<p>Or as a plain skill, one line:</p>
+<pre><code>mkdir -p ~/.claude/skills/crew &amp;&amp; curl -fsSL https://raw.githubusercontent.com/tradexag/crew/main/skills/crew/SKILL.md -o ~/.claude/skills/crew/SKILL.md</code></pre>
+<p class="note">For a single project use <code>.claude/skills/crew/</code> inside the repo instead of <code>~/.claude/skills/crew/</code>. On claude.ai, upload <code>skills/crew/SKILL.md</code> (zipped in a <code>crew/</code> folder) under Settings → Capabilities → Skills.</p>
+
+<h2>Use</h2>
+<div class="tbl"><table>
+  <thead><tr><th>Command</th><th>What happens</th></tr></thead>
+  <tbody>
+    <tr><td><code>/crew theme The Simpsons</code></td><td>Claude casts 12 characters, shows the table, saves it</td></tr>
+    <tr><td><code>/crew &lt;task&gt;</code></td><td>assigns the next ticket number and the right character, starts work</td></tr>
+    <tr><td><code>/crew &lt;name&gt; &lt;task&gt;</code></td><td>gives the task to that character</td></tr>
+    <tr><td><code>/crew &lt;name&gt;</code></td><td>that character reports on its open tickets</td></tr>
+    <tr><td><code>/crew</code></td><td>line-up: who works on what</td></tr>
+    <tr><td><code>/crew swap Homer Moe</code></td><td>replaces one character, the role stays</td></tr>
+  </tbody>
+</table></div>
+<p class="note">There is no default theme: the first <code>/crew</code> asks you for one.</p>
+
+<h2>The 12 roles</h2>
+<ul class="roles"><li>Planning</li><li>Implementation</li><li>Review/Tests</li><li>Design/UI</li><li>Copy/Communication</li><li>Docs/Memory</li><li>AI/Automation</li><li>Security</li><li>Bugs/Incidents</li><li>Pricing/Billing</li><li>Research/Analysis</li><li>Data/Imports</li></ul>
+
+<div class="final">
+<p class="lead">Show us your crew: open an issue on GitHub or tag TradeX AG on LinkedIn.</p>
+<div class="cta"><a class="btn" href="https://github.com/tradexag/crew" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a><span class="mono">Free, open source (MIT) · TradeX International AG</span></div>
+</div>
+</div>
+
+</main>
+<footer class="mono">
+  <span>© 2026 TradeX International AG</span>
+  <nav><a href="/">Start</a><a href="/impressum.html"><span data-l="de">Impressum</span><span data-l="en" hidden>Legal notice</span></a><a href="/datenschutz.html"><span data-l="de">Datenschutz</span><span data-l="en" hidden>Privacy</span></a></nav>
+</footer>
+<script>
+(function(){
+  var T = {de:{t:document.title,d:'/crew ist ein kostenloser Skill für Claude Code: Jede Aufgabe bekommt eine Nummer und eine Figur aus einem Thema deiner Wahl. 12 Rollen, Open Source (MIT).'},
+           en:{t:'/crew · give your AI coding agent a team · TradeX International AG',d:'/crew is a free Claude Code skill: every task gets a ticket number and a character from a theme you pick. 12 roles, open source (MIT).'}};
+  var md = document.querySelector('meta[name=description]');
+  function set(l){
+    document.documentElement.lang = l;
+    document.title = T[l].t; md.setAttribute('content', T[l].d);
+    document.querySelectorAll('[data-l]').forEach(function(el){ el.hidden = el.getAttribute('data-l') !== l; });
+    document.querySelectorAll('[data-set]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-set') === l); });
+    try { localStorage.setItem('tradex-lang', l); } catch(e){}
+  }
+  document.querySelectorAll('[data-set]').forEach(function(b){ b.addEventListener('click', function(){ set(b.getAttribute('data-set')); }); });
+  var s = null; try { s = localStorage.getItem('tradex-lang'); } catch(e){}
+  set(s === 'en' ? 'en' : 'de');
+})();
+</script>
+</body>
+</html>
