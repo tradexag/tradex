@@ -266,7 +266,6 @@ p{margin:0}
 .brands li{font-size:14px;font-weight:600;letter-spacing:.08em;color:var(--graphite);white-space:nowrap;padding:4px 18px 4px 0;transition:color .3s}
 .brands li + li{padding-left:18px;border-left:1px solid var(--line)}
 .brands li:hover{color:var(--ink)}
-.brands .brands-own{margin-bottom:0}
 .brands li a{color:inherit;border-bottom:1px solid var(--accent)}
 .stack-note a{border-bottom:1px solid var(--accent)}
 @media (max-width:820px){.brands{grid-column:1 / -1}}
@@ -520,6 +519,85 @@ p{margin:0}
 @media (max-width:560px){.contact-card{padding:4px 16px}.contact-card div{grid-template-columns:70px minmax(0,1fr) auto}}
 @media (prefers-reduced-motion:reduce){.contact-card::after{animation:none;background:none}.contact-card{border-color:var(--ink)}}
 
+/* ---------- conversion rework ---------- */
+/* hero trust strip */
+.trust{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:clamp(56px,8vw,104px);padding-top:20px;border-top:1px solid var(--ink)}
+.trust .mono{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.trust ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 0}
+.trust li{font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--graphite);white-space:nowrap;padding:2px 16px}
+.trust li + li{border-left:1px solid var(--line)}
+.trust li:first-child{padding-left:0}
+.trust-break{flex-basis:100%;height:0}
+.trust li a{color:inherit;border-bottom:1px solid var(--accent)}
+@media (max-width:720px){.trust li{padding:2px 12px;font-size:12px}}
+/* problem */
+.problem{border-top:1px solid var(--line)}
+.pains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.pain{padding:28px 24px 8px 0;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pain + .pain{padding-left:24px;border-left:1px solid var(--line)}
+.pain .mono{color:var(--accent)}
+.pain h3{font-size:clamp(20px,1.7vw,24px);line-height:1.15}
+.pain p{color:var(--graphite);font-size:16px}
+.pain-turn{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;margin-top:clamp(48px,6vw,80px);padding-top:28px;border-top:1px solid var(--line)}
+.pain-turn p{font-size:clamp(22px,2.4vw,34px);line-height:1.2;letter-spacing:-.02em;font-weight:500;color:var(--soft);max-width:28em}
+.pain-turn strong{color:var(--ink);font-weight:500}
+@media (max-width:1100px){.pains{grid-template-columns:repeat(2,minmax(0,1fr))}.pain:nth-child(3){padding-left:0;border-left:0}.pain:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:640px){.pains{grid-template-columns:1fr}.pain,.pain + .pain{padding:24px 0 8px;border-left:0}.pain + .pain{border-top:1px solid var(--line)}}
+/* outcome line on the service tiles */
+.disc-out{font-size:15px;color:var(--ink);padding-left:14px;border-left:2px solid var(--accent);max-width:36em}
+.disc-out b{display:block;font-family:var(--font-mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.bento .disc:nth-child(1) .disc-body,.bento .disc:nth-child(3) .disc-body{flex-wrap:wrap}
+.bento .disc:nth-child(1) .disc-out,.bento .disc:nth-child(3) .disc-out{flex:1 1 100%;order:3}
+/* process */
+.process{background:var(--paper);border-top:1px solid var(--line)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
+.steps li{position:relative;padding-top:28px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.steps li::before{content:"";position:absolute;left:0;right:-24px;top:0;height:1px;background:var(--ink)}
+.steps li:last-child::before{right:0}
+.steps li::after{content:"";position:absolute;left:0;top:-4px;width:9px;height:9px;background:var(--accent)}
+.steps .mono{color:var(--muted)}
+.steps h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.03em;text-transform:uppercase}
+.steps p{color:var(--graphite);font-size:16px;max-width:24em}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:clamp(56px,7vw,96px)}
+.why-item{border:1px solid var(--line);background:var(--white);padding:22px 24px;display:flex;flex-direction:column;gap:8px}
+.why-item .mono{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:8px}
+.why-item .mono::before{content:"";width:6px;height:6px;background:var(--accent)}
+.why-item p{color:var(--graphite);font-size:15.5px}
+.step-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:40px}
+.step-cta .mono{color:var(--muted);font-size:12px}
+@media (max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}.steps li:nth-child(2)::before{right:0}.why{grid-template-columns:1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}.steps li::before{right:0}}
+/* CTA band */
+.cta-band{background:var(--ink);color:var(--white)}
+.cta-band-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 48px;padding-block:clamp(56px,7vw,96px)}
+.cta-band p{font-size:clamp(26px,3.2vw,46px);line-height:1.08;letter-spacing:-.035em;font-weight:600;max-width:20em}
+.cta-band p .dim{color:#8A8E93}
+.cta-band-act{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.cta-band .btn-primary{background:var(--white);color:var(--ink);border-color:var(--white)}
+.cta-band .btn-primary:hover{background:#E9EAEB;border-color:#E9EAEB}
+.cta-band-act .mono{font-size:13px;color:#BFC2C6;border-bottom:1px solid var(--accent)}
+/* model CTA */
+.model-cta{margin-top:auto;display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:14px;font-weight:500;padding:10px 0 4px;border-bottom:1px solid var(--ink);transition:gap .3s var(--ease),color .2s}
+.model-cta:hover{gap:16px;color:var(--accent);border-color:var(--accent)}
+/* contact */
+.field label i{font-style:normal;text-transform:none;letter-spacing:0;color:var(--soft);margin-left:6px}
+.form{margin-top:0;padding-top:0;border-top:0}
+.contact-side{grid-column:8 / span 5;display:flex;flex-direction:column;gap:14px;min-width:0}
+.contact-side .contact-card{grid-column:auto}
+.contact-side-label{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.contact-card a[href^="tel"]{border-bottom:1px solid var(--line)}
+.next-steps{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.next-steps li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:8px;font-size:15px;color:var(--graphite)}
+.next-steps .mono{color:var(--accent);font-size:12px;padding-top:3px}
+@media (max-width:900px){.contact-side{grid-column:1 / -1;margin-top:24px}}
+/* sticky mobile CTA */
+.sticky-cta{display:none}
+@media (max-width:960px){
+  .sticky-cta{display:flex;justify-content:center;align-items:center;gap:10px;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));height:52px;background:var(--ink);color:var(--white);font-size:15px;font-weight:500;border-radius:2px;z-index:40;box-shadow:0 8px 24px rgba(0,0,0,.18);transform:translateY(calc(100% + 24px));transition:transform .4s var(--ease)}
+  .sticky-cta.on{transform:none}
+  .menu-open .sticky-cta{display:none}
+}
+
 /* terminal opens on Lars's desk photo, then a red scan line wipes it away to the console */
 .terminal{position:relative}
 .term-photo{position:absolute;inset:0;z-index:5;background:var(--ink);overflow:hidden;clip-path:inset(0 0 0 0);transition:clip-path 1.2s var(--ease)}
@@ -581,6 +659,78 @@ p{margin:0}
 html[lang="de"] .hero-title{font-size:clamp(34px,6.7vw,100px)}
 html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 @media (max-width:420px){.lang-btn{padding-inline:10px}.logo-sub{display:none!important}}
+
+/* ---------- funnel (2026-10-25) ---------- */
+.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:4px}
+.hero-trust .mono{font-size:12px;color:var(--muted)}
+.contact-person{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--graphite)}
+.contact-person img{width:40px;height:40px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:1px solid var(--line)}
+.contact-person b{display:block;font-weight:600;color:var(--ink)}
+.proof{display:flex;flex-wrap:wrap;gap:0;margin:8px 0 0;padding:0;border-top:1px solid var(--line)}
+.proof div{padding:14px 22px 0 0;margin-right:22px;border-right:1px solid var(--line)}
+.proof div:last-child{border-right:0;margin-right:0}
+.proof dt{font-size:clamp(20px,1.8vw,26px);font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.proof dd{margin:2px 0 0;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.sec-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:clamp(40px,5vw,64px)}
+.sec-cta .mono{color:var(--muted);font-size:12px}
+.check{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.check-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.check-intro{grid-column:1 / span 5;display:flex;flex-direction:column;gap:20px;min-width:0}
+.check-intro h2{margin:0;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.04em}
+.check-intro p{color:var(--graphite);font-size:17px;line-height:1.55;margin:0}
+.check-intro .mono.trustline{font-size:12px;color:var(--muted)}
+.quiz{grid-column:7 / span 6;align-self:start;background:var(--white);border:1px solid var(--ink);padding:clamp(22px,3vw,40px);min-width:0;min-height:420px;display:flex;flex-direction:column}
+.q-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.q-bar{height:2px;background:var(--line);margin:12px 0 28px;position:relative}
+.q-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0;transition:width .4s var(--ease)}
+.q-step h3{font-size:clamp(22px,2.2vw,30px);line-height:1.15;letter-spacing:-.02em;font-weight:600;margin:0 0 22px}
+.q-step .q-sub{color:var(--muted);font-size:15px;margin:-10px 0 22px}
+.q-opts{display:flex;flex-direction:column;gap:10px}
+.q-opt{font:inherit;font-size:16px;text-align:left;padding:16px 18px;border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:2px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:border-color .2s,background .2s}
+.q-opt::after{content:"→";color:var(--soft);transition:transform .3s var(--ease),color .2s}
+.q-opt:hover{border-color:var(--ink)}
+.q-opt:hover::after{color:var(--ink);transform:translateX(3px)}
+.q-opt[aria-pressed="true"]{border-color:var(--ink);background:var(--paper)}
+.q-opt[aria-pressed="true"]::after{content:"●";color:var(--accent)}
+.q-opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.q-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.q-row .q-opt{flex:1 1 140px}
+.q-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.q-count{display:flex;align-items:baseline;gap:12px;margin:0 0 18px}
+.q-num{font-size:clamp(56px,6vw,84px);font-weight:600;letter-spacing:-.04em;line-height:1;color:var(--ink)}
+.q-num.has{color:var(--accent)}
+.q-count span:last-child{font-size:clamp(20px,2vw,26px);font-weight:600;letter-spacing:-.02em}
+.q-gaps{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:10px}
+.q-gaps li{position:relative;padding-left:22px;color:var(--graphite);line-height:1.45}
+.q-gaps li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;background:var(--accent)}
+.q-offer{color:var(--graphite);margin:0 0 24px;line-height:1.5}
+.q-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:24px}
+.q-back{font:inherit;font-family:var(--font-mono);font-size:12px;color:var(--muted);background:none;border:0;padding:6px 0;cursor:pointer}
+.q-back:hover{color:var(--ink)}
+.q-step .form{grid-template-columns:repeat(2,minmax(0,1fr))}
+.q-trust{font-family:var(--font-mono);font-size:11px;line-height:1.6;color:var(--muted);margin:16px 0 0}
+.q-done{display:flex;flex-direction:column;gap:14px}
+.q-done .q-sent{font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-.02em;margin:0}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.faq-list{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.faq-items{grid-column:4 / span 9;border-top:1px solid var(--ink)}
+.faq-items details{border-bottom:1px solid var(--line)}
+.faq-items summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:clamp(18px,1.6vw,22px);font-weight:500;letter-spacing:-.01em}
+.faq-items summary::-webkit-details-marker{display:none}
+.faq-items summary::after{content:"+";font-family:var(--font-mono);font-weight:400;color:var(--muted);transition:transform .3s var(--ease)}
+.faq-items details[open] summary::after{transform:rotate(45deg);color:var(--accent)}
+.faq-items details p{margin:0 0 26px;max-width:46em;color:var(--graphite);line-height:1.6}
+.faq-list .sec-cta{grid-column:4 / span 9}
+.contact-alt{display:flex;flex-direction:column;gap:22px}
+.contact-alt p{margin:0;color:var(--graphite);font-size:17px;line-height:1.55;max-width:34em}
+@media (max-width:960px){
+  .check-intro,.quiz,.faq-items,.faq-list .sec-cta{grid-column:1 / -1}
+  .quiz{min-height:0}
+}
+@media (max-width:560px){
+  .q-step .form{grid-template-columns:1fr}
+  .proof div{padding-right:14px;margin-right:14px}
+}
 </style>
 </head>
 <body>
@@ -594,11 +744,12 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       <span><span class="logo-word">TRADEX</span><span class="logo-sub" style="display:block">International AG</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#expertise" data-nav>Expertise</a></li>
+      <li><a href="#expertise" data-nav data-en="Services">Leistungen</a></li>
+      <li><a href="#vorgehen" data-nav data-en="Process">Vorgehen</a></li>
       <li><a href="#founder" data-nav data-en="About me">Über mich</a></li>
-      <li><a href="#engineering" data-nav>Engineering</a></li>
-      <li><a href="#stack" data-nav data-en="Stack">Technologie</a></li>
+      <li><a href="#stack" data-nav data-en="Technology">Technologie</a></li>
       <li><a href="#zusammenarbeit" data-nav data-en="Work with me">Zusammenarbeit</a></li>
+      <li><a href="#faq" data-nav>FAQ</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang" id="lang">
@@ -608,19 +759,20 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
           <li><button type="button" role="option" data-lang="en" aria-selected="false">English <span class="mono">EN</span></button></li>
         </ul>
       </div>
-      <a href="#kontakt" class="nav-cta"><span data-en="Discuss a project">Projekt besprechen</span> <span aria-hidden="true">→</span></a>
+      <a href="#check" class="nav-cta"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span aria-hidden="true">→</span></a>
       <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
     </div>
   </div>
 </header>
 
 <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Navigation">
-  <a href="#expertise">Expertise <span class="mono">01</span></a>
-  <a href="#founder"><span data-en="About me">Über mich</span> <span class="mono">02</span></a>
-  <a href="#engineering">Engineering <span class="mono">03</span></a>
-  <a href="#stack"><span data-en="Stack">Technologie</span> <span class="mono">04</span></a>
+  <a href="#expertise"><span data-en="Services">Leistungen</span> <span class="mono">01</span></a>
+  <a href="#vorgehen"><span data-en="Process">Vorgehen</span> <span class="mono">02</span></a>
+  <a href="#founder"><span data-en="About me">Über mich</span> <span class="mono">03</span></a>
+  <a href="#stack"><span data-en="Technology">Technologie</span> <span class="mono">04</span></a>
   <a href="#zusammenarbeit"><span data-en="Work with me">Zusammenarbeit</span> <span class="mono">05</span></a>
-  <a href="#kontakt" class="nav-cta"><span data-en="Discuss a project">Projekt besprechen</span> →</a>
+  <a href="#faq"><span>FAQ</span> <span class="mono">06</span></a>
+  <a href="#check" class="nav-cta"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> →</a>
 </nav>
 
 <main>
@@ -644,11 +796,19 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     <div class="hero-grid">
       <div class="hero-copy">
         <p class="hero-sub" data-en="<span>Marketplace Operations.</span><span>E-Commerce Strategy.</span><span>Software Engineering.</span>"><span>Marktplatz-Management.</span><span>E-Commerce-Strategie.</span><span>Softwareentwicklung.</span></p>
-        <p class="lead" data-en="I combine hands-on e-commerce experience with my own software development and automation. For companies that want to work more efficiently and grow sustainably.">Ich verbinde operative E-Commerce-Erfahrung mit eigener Softwareentwicklung und Automatisierung. Für Unternehmen, die effizienter arbeiten und nachhaltig wachsen wollen.</p>
+        <p class="lead" data-en="I get your marketplace business back on track: healthy accounts, product data that sells and workflows that run on their own. From someone who runs e-commerce himself and builds his own software.">Ich bringe Ihr Marktplatz-Geschäft auf Kurs: stabile Accounts, Produktdaten, die verkaufen, und Abläufe, die von selbst laufen. Von jemandem, der E-Commerce selbst betreibt und eigene Software entwickelt.</p>
         <div class="btns">
-          <a class="btn btn-primary" href="#kontakt"><span data-en="Discuss a project">Projekt besprechen</span> <span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="#expertise"><span data-en="Explore my expertise">Expertise entdecken</span> <span class="arr" aria-hidden="true">↓</span></a>
+          <a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a>
         </div>
+        <div class="hero-trust">
+          <span class="contact-person"><img src="/assets/lars-avatar.jpg" width="240" height="240" alt="Lars Orlamünde" decoding="async"><span><b>Lars Orlamünde</b><span data-en="You talk to me directly.">Sie sprechen direkt mit mir.</span></span></span>
+          <span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span>
+        </div>
+        <dl class="proof">
+          <div><dt data-en="Since 2018">Seit 2018</dt><dd data-en="in e-commerce">im E-Commerce</dd></div>
+          <div><dt data-en="9 brands">9 Marken</dt><dd data-en="I manage">betreue ich</dd></div>
+          <div><dt>MIT</dt><dd data-en="AI products, certified">KI-Produkte, zertifiziert</dd></div>
+        </dl>
       </div>
 
       <div class="terminal-col">
@@ -665,11 +825,113 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       </div>
     </div>
 
-    <nav class="hero-index" aria-label="Kernkompetenzen" data-en-aria="Core disciplines">
-      <a href="#expertise"><span class="mono" data-en="Operate">Betreiben</span><span class="t"><span data-en="Marketplace Operations">Marktplatz-Management</span> <span class="arr">↘</span></span></a>
-      <a href="#expertise"><span class="mono" data-en="Advise">Beraten</span><span class="t"><span data-en="E-Commerce Strategy">E-Commerce-Strategie</span> <span class="arr">↘</span></span></a>
-      <a href="#engineering"><span class="mono" data-en="Build">Entwickeln</span><span class="t"><span data-en="Software Engineering">Softwareentwicklung</span> <span class="arr">↘</span></span></a>
-    </nav>
+    <div class="trust">
+      <span class="mono" data-en="Brands I manage">Marken, die ich betreue</span>
+      <ul>
+        <li>RED LOON</li><li>VDP</li><li>KLARBEIT</li><li>MANUKA.PLUS</li><li>AUWALDBIO</li><li>BYODO</li><li>NATURES FINEST</li><li>HOTGEN</li><li>KAWOLA</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section class="section problem" id="ausgangslage">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i><span data-en="Starting point">Ausgangslage</span> <span class="path">/ausgangslage</span></div>
+      <h2 class="reveal" data-en="Sound<br><span class='dim'>familiar?</span>">Kommt Ihnen das<br><span class="dim">bekannt vor?</span></h2>
+    </div>
+    <div class="pains">
+      <article class="pain reveal">
+        <span class="mono">01</span>
+        <h3 data-en="The account is under pressure.">Der Account steht unter Druck.</h3>
+        <p data-en="Account health warnings, suppressed listings, suspensions. And nobody in-house knows exactly why.">Account-Health-Warnungen, unterdrückte Listings, Sperrungen. Und intern weiss niemand genau, warum.</p>
+      </article>
+      <article class="pain reveal d1">
+        <span class="mono">02</span>
+        <h3 data-en="Product data is everywhere.">Produktdaten sind überall verstreut.</h3>
+        <p data-en="ERP, shop, marketplaces, Excel. Every change is copied by hand, and somewhere something gets lost.">ERP, Shop, Marktplätze, Excel. Jede Änderung wird von Hand nachgezogen, und irgendwo geht etwas verloren.</p>
+      </article>
+      <article class="pain reveal d2">
+        <span class="mono">03</span>
+        <h3 data-en="More channels, more manual work.">Mehr Kanäle, mehr Handarbeit.</h3>
+        <p data-en="Every new marketplace brings new rules, formats and tasks. The team does not grow at the same pace.">Jeder neue Marktplatz bringt neue Regeln, Formate und Aufgaben. Das Team wächst nicht im selben Tempo.</p>
+      </article>
+      <article class="pain reveal d3">
+        <span class="mono">04</span>
+        <h3 data-en="Lots of reports, little clarity.">Viele Berichte, wenig Klarheit.</h3>
+        <p data-en="There are enough dashboards. What is missing is a clear statement of what to do next.">Dashboards gibt es genug. Was fehlt, ist eine klare Aussage, was als Nächstes zu tun ist.</p>
+      </article>
+    </div>
+    <div class="pain-turn reveal">
+      <p data-en="Which of these apply to you? <strong>Find out in two minutes, right here.</strong>">Was davon trifft auf Sie zu? <strong>Finden Sie es in zwei Minuten heraus, direkt hier.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHECK ================= -->
+<section class="section check" id="check">
+  <div class="wrap check-grid">
+    <div class="check-intro">
+      <div class="label mono"><i class="sq"></i><span data-en="Marketplace check">Marktplatz-Check</span> <span class="path">/check</span></div>
+      <h2 data-en="Where does your<br><span class='dim'>marketplace business stand?</span>">Wo steht Ihr<br><span class="dim">Marktplatz-Geschäft?</span></h2>
+      <p data-en="Four clicks, two minutes. At the end you see where things are stuck and can book a free call with me.">Vier Klicks, zwei Minuten. Am Ende sehen Sie, wo es hakt, und können ein kostenloses Gespräch mit mir vormerken.</p>
+      <span class="contact-person"><img src="/assets/lars-avatar.jpg" width="240" height="240" alt="Lars Orlamünde" loading="lazy" decoding="async"><span><b>Lars Orlamünde</b><span data-en="I read every request personally.">Ich lese jede Anfrage persönlich.</span></span></span>
+      <span class="mono trustline" data-en="Free · no obligation · your answers only go to me">Kostenlos · unverbindlich · Ihre Antworten gehen nur an mich</span>
+    </div>
+    <div class="quiz" id="quiz">
+      <div class="q-top"><span id="qPos"><span data-en="Question">Frage</span> <b id="qPosN">1</b> / 4</span><span data-en="Marketplace check">Marktplatz-Check</span></div>
+      <div class="q-bar" aria-hidden="true"><i id="qBar"></i></div>
+        <div class="q-step" data-step="0">
+          <h3 data-en="Where do you sell today?">Wo verkaufen Sie heute?</h3>
+          <div class="q-opts" data-q="q1"><button type="button" class="q-opt" data-v="shop" data-gap="shop" aria-pressed="false"><span data-en="Only in my own shop">Nur im eigenen Shop</span></button><button type="button" class="q-opt" data-v="one" aria-pressed="false"><span data-en="On one marketplace">Auf einem Marktplatz</span></button><button type="button" class="q-opt" data-v="many" aria-pressed="false"><span data-en="On several marketplaces">Auf mehreren Marktplätzen</span></button></div>
+        </div>
+        <div class="q-step" data-step="1" hidden>
+          <h3 data-en="How is your marketplace account doing right now?">Wie steht Ihr Marktplatz-Account gerade da?</h3>
+          <div class="q-opts" data-q="q2"><button type="button" class="q-opt" data-v="ok" aria-pressed="false"><span data-en="All good">Alles im grünen Bereich</span></button><button type="button" class="q-opt" data-v="warn" data-gap="health" aria-pressed="false"><span data-en="Warnings or suppressed listings">Warnungen oder gesperrte Listings</span></button><button type="button" class="q-opt" data-v="unknown" data-gap="unknown" aria-pressed="false"><span data-en="Not sure">Weiss nicht</span></button></div>
+        </div>
+        <div class="q-step" data-step="2" hidden>
+          <h3 data-en="How do product data and stock get to your channels?">Wie kommen Produktdaten und Bestände auf Ihre Kanäle?</h3>
+          <div class="q-opts" data-q="q3"><button type="button" class="q-opt" data-v="auto" aria-pressed="false"><span data-en="Automatically from ERP or PIM">Automatisch aus ERP oder PIM</span></button><button type="button" class="q-opt" data-v="mixed" data-gap="data" aria-pressed="false"><span data-en="Partly automated, partly by hand">Teils automatisch, teils von Hand</span></button><button type="button" class="q-opt" data-v="manual" data-gap="data" aria-pressed="false"><span data-en="By hand or via Excel">Von Hand oder per Excel</span></button></div>
+        </div>
+        <div class="q-step" data-step="3" hidden>
+          <h3 data-en="Who looks after the marketplaces in your company?">Wer kümmert sich bei Ihnen um die Marktplätze?</h3>
+          <div class="q-opts" data-q="q4"><button type="button" class="q-opt" data-v="team" aria-pressed="false"><span data-en="A dedicated, experienced team">Ein eigenes, erfahrenes Team</span></button><button type="button" class="q-opt" data-v="side" data-gap="team" aria-pressed="false"><span data-en="Someone on the side">Jemand nebenbei</span></button><button type="button" class="q-opt" data-v="none" data-gap="team" aria-pressed="false"><span data-en="Nobody in particular">Niemand fest</span></button></div>
+        </div>
+        <div class="q-step" data-step="4" hidden>
+          <p class="q-count"><span class="q-num" id="qNum">0</span><span data-en="open points">offene Punkte</span></p>
+          <ul class="q-gaps" id="qGaps"><li data-gap="shop" hidden data-en="Marketplaces are still untapped. I show you which ones fit your range.">Marktplätze sind noch ungenutzt. Ich zeige Ihnen, welche zu Ihrem Sortiment passen.</li><li data-gap="health" hidden data-en="Your account is sending warning signals. Left alone, they can turn into suspensions.">Ihr Account sendet Warnsignale. Unbehandelt können daraus Sperrungen werden.</li><li data-gap="unknown" hidden data-en="The state of your account is unclear. That in itself is a risk.">Der Zustand Ihres Accounts ist unklar. Das ist selbst schon ein Risiko.</li><li data-gap="data" hidden data-en="Product data is partly maintained by hand. That costs time and causes errors.">Produktdaten werden teils von Hand gepflegt. Das kostet Zeit und erzeugt Fehler.</li><li data-gap="team" hidden data-en="Marketplaces run on the side. Revenue gets left on the table that nobody sees.">Marktplätze laufen nebenbei. So bleibt Umsatz liegen, den niemand sieht.</li></ul>
+          <p class="q-offer" id="qOfferGaps" data-en="I am happy to go through these points with you. Free of charge, 30 minutes, directly with me.">Diese Punkte schaue ich mir gern mit Ihnen an. Kostenlos, 30 Minuten, direkt mit mir.</p>
+          <p class="q-offer" id="qOfferNone" hidden data-en="You are well set up. If you still want to grow, let’s talk about the next steps. Free of charge, 30 minutes.">Sie sind gut aufgestellt. Wenn Sie trotzdem wachsen wollen, sprechen wir über die nächsten Schritte. Kostenlos, 30 Minuten.</p>
+          <button type="button" class="btn btn-primary q-next" data-go="5"><span data-en="Book a call">Gespräch vormerken</span> <span class="arr" aria-hidden="true">→</span></button>
+        </div>
+        <div class="q-step" data-step="5" hidden>
+          <h3 data-en="When would a call suit you?">Wann passt Ihnen ein Gespräch?</h3>
+          <p class="q-sub" data-en="I will get back to you with concrete times.">Ich melde mich mit konkreten Terminvorschlägen.</p>
+          <p class="q-label" data-en="Week">Woche</p>
+          <div class="q-row" data-q="week"><button type="button" class="q-opt" data-v="this" aria-pressed="false"><span data-en="This week">Diese Woche</span></button><button type="button" class="q-opt" data-v="next" aria-pressed="false"><span data-en="Next week">Nächste Woche</span></button><button type="button" class="q-opt" data-v="later" aria-pressed="false"><span data-en="Later">Später</span></button></div>
+          <p class="q-label" data-en="Time of day">Tageszeit</p>
+          <div class="q-row" data-q="time"><button type="button" class="q-opt" data-v="am" aria-pressed="false"><span data-en="Mornings">Vormittags</span></button><button type="button" class="q-opt" data-v="pm" aria-pressed="false"><span data-en="Afternoons">Nachmittags</span></button></div>
+          <button type="button" class="btn btn-primary q-next" data-go="6" id="qSlotNext" disabled><span data-en="Continue">Weiter</span> <span class="arr" aria-hidden="true">→</span></button>
+        </div>
+        <div class="q-step" data-step="6" hidden>
+          <h3 data-en="Call noted. Now just your contact details.">Termin vorgemerkt. Jetzt nur noch Ihre Kontaktdaten.</h3>
+          <form class="form" id="form" novalidate>
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-mail" data-en="Email">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-phone" data-en="Phone <i>optional</i>">Telefon <i>optional</i></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="f-company" data-en="Company <i>optional</i>">Unternehmen <i>optional</i></label><input id="f-company" name="company" autocomplete="organization"></div>
+            <div class="full"><button class="btn btn-primary" type="submit"><span data-en="Send request">Anfrage senden</span> <span class="arr" aria-hidden="true">→</span></button></div>
+            <p class="form-note" id="formNote"></p>
+          </form>
+          <p class="q-trust" data-en="Your details only go to me, Lars Orlamünde. No newsletter, no sharing with third parties.">Ihre Angaben gehen nur an mich, Lars Orlamünde. Kein Newsletter, keine Weitergabe an Dritte.</p>
+        </div>
+        <div class="q-step q-done" data-step="7" hidden>
+          <p class="q-sent" data-en="Almost done.">Fast geschafft.</p>
+          <p data-en="Your mail program has opened with the finished request. Please just press send. If nothing opened, write to me directly at <a href='mailto:lars@tradexag.ch'>lars@tradexag.ch</a>.">Ihr E-Mail-Programm hat sich mit der fertigen Anfrage geöffnet. Bitte nur noch absenden. Falls sich nichts geöffnet hat, schreiben Sie mir direkt an <a href="mailto:lars@tradexag.ch">lars@tradexag.ch</a>.</p>
+        </div>
+      <div class="q-foot"><button type="button" class="q-back" id="qBack" hidden data-en="← Back">← Zurück</button></div>
+    </div>
   </div>
 </section>
 
@@ -677,8 +939,8 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 <section class="section expertise" id="expertise">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label mono"><i class="sq"></i>Expertise <span class="path">/expertise</span></div>
-      <h2 class="reveal" data-en="Three disciplines.<br><span class='dim'>One approach.</span>">Drei Disziplinen.<br><span class="dim">Ein Ansatz.</span></h2>
+      <div class="label mono"><i class="sq"></i><span data-en="Services">Leistungen</span> <span class="path">/expertise</span></div>
+      <h2 class="reveal" data-en="Three levers.<br><span class='dim'>One point of contact.</span>">Drei Hebel.<br><span class="dim">Ein Ansprechpartner.</span></h2>
     </div>
 
     <div class="disc-list bento">
@@ -687,6 +949,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <h3 data-en="Marketplace<br>Operations">Marktplatz-<br>Management</h3>
         <div class="disc-body">
           <p data-en="Amazon Seller Central, Vendor Central, account health, product data, listings and international marketplaces.">Amazon Seller Central, Vendor Central, Account Health, Produktdaten, Listings und internationale Marktplätze.</p>
+          <p class="disc-out" data-en="<b>Result</b> Stable accounts and listings that sell."><b>Ergebnis</b> Stabile Accounts und Listings, die verkaufen.</p>
           <ul class="tags"><li>Amazon</li><li>eBay</li><li>OTTO</li><li>Kaufland</li><li>Temu</li><li data-en="+ more platforms">+ weitere Plattformen</li></ul>
         </div>
         <div class="disc-arr" aria-hidden="true">→</div>
@@ -696,6 +959,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <h3 data-en="Strategy &amp;<br>Consulting">Strategie &amp;<br>Beratung</h3>
         <div class="disc-body">
           <p data-en="Interim Head of E-Commerce, marketplace strategy, internationalisation and hands-on management consulting.">Interim Head of E-Commerce, Marktplatzstrategie, Internationalisierung und operative Unternehmensberatung.</p>
+          <p class="disc-out" data-en="<b>Result</b> A clear strategy, and someone who helps put it into practice."><b>Ergebnis</b> Eine klare Strategie und jemand, der sie mit umsetzt.</p>
           <ul class="tags"><li>Interim Management</li><li data-en="Internationalisation">Internationalisierung</li><li data-en="Process optimisation">Prozessoptimierung</li></ul>
         </div>
         <div class="disc-arr" aria-hidden="true">→</div>
@@ -705,6 +969,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <h3 data-en="Software &amp;<br>Automation">Software &amp;<br>Automatisierung</h3>
         <div class="disc-body">
           <p data-en="Custom software development, API integrations, AI assistants and automated e-commerce processes.">Individuelle Softwareentwicklung, API-Integrationen, KI-Assistenten und automatisierte E-Commerce-Prozesse.</p>
+          <p class="disc-out" data-en="<b>Result</b> Less manual work, fewer errors, more time for growth."><b>Ergebnis</b> Weniger Handarbeit, weniger Fehler, mehr Zeit für Wachstum.</p>
           <ul class="tags"><li>APIs</li><li data-en="AI assistants">KI-Assistenten</li><li data-en="Databases">Datenbanken</li><li>Workflows</li></ul>
         </div>
         <div class="disc-arr" aria-hidden="true">→</div>
@@ -714,25 +979,34 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     <div class="statement">
       <div class="label mono"><i class="sq"></i><span data-en="Positioning">Positionierung</span></div>
       <p class="statement-text reveal" data-en="I don’t see e-commerce only from a consultant’s perspective. <strong>I run e-commerce businesses myself and build the software I use to make processes more efficient.</strong>">Ich verstehe E-Commerce nicht nur aus der Beratungsperspektive. <strong>Ich betreibe selbst E-Commerce-Geschäfte und entwickle die Software, mit der ich Prozesse effizienter gestalte.</strong></p>
-      <div class="brands reveal d1">
-        <span class="mono" data-en="Brands I manage">Betreute Marken</span>
-        <ul>
-          <li>RED LOON</li>
-          <li>VDP</li>
-          <li>KLARBEIT</li>
-          <li>MANUKA.PLUS</li>
-          <li>AUWALDBIO</li>
-          <li>BYODO</li>
-          <li>NATURES FINEST</li>
-          <li>HOTGEN</li>
-          <li>KAWOLA</li>
-        </ul>
-      </div>
       <div class="statement-foot reveal d1">
         <div><span class="mono" data-en="I don’t just solve problems.">Ich löse Probleme nicht nur.</span><p data-en="Every recurring task is a candidate for standardisation.">Jede wiederkehrende Aufgabe ist ein Kandidat für Standardisierung.</p></div>
         <div><span class="mono" data-en="I build systems">Ich entwickle Systeme,</span><p data-en="so the same problems ideally never come back.">damit dieselben Probleme möglichst nicht erneut entstehen.</p></div>
       </div>
     </div>
+    <div class="sec-cta reveal"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section process" id="vorgehen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i><span data-en="Process">Vorgehen</span> <span class="path">/vorgehen</span></div>
+      <h2 class="reveal" data-en="How we<br><span class='dim'>work together.</span>">So arbeiten wir<br><span class="dim">zusammen.</span></h2>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><span class="mono">01</span><h3 data-en="Check &amp; call">Check &amp; Gespräch</h3><p data-en="Two minutes of check, then 30 minutes with me, free of charge. I tell you openly whether and how I can help.">Zwei Minuten Check, danach 30 Minuten mit mir, kostenlos. Ich sage Ihnen offen, ob und wie ich helfen kann.</p></li>
+      <li class="reveal d1"><span class="mono">02</span><h3 data-en="Analysis">Analyse</h3><p data-en="I look at accounts, data and workflows. You get a clear assessment with priorities.">Ich schaue mir Accounts, Daten und Abläufe an. Sie bekommen eine klare Einschätzung mit Prioritäten.</p></li>
+      <li class="reveal d2"><span class="mono">03</span><h3 data-en="Implementation">Umsetzung</h3><p data-en="I implement with you, with my team and my own systems. No slide decks that end up in a drawer.">Ich setze selbst mit um, mit meinem Team und meinen eigenen Systemen. Keine Folien, die in der Schublade landen.</p></li>
+      <li class="reveal d3"><span class="mono">04</span><h3 data-en="Anchor">Verankern</h3><p data-en="The knowledge stays in your company. If you wish, I keep running operations for you.">Das Wissen bleibt in Ihrem Unternehmen. Auf Wunsch betreue ich den Betrieb laufend weiter.</p></li>
+    </ol>
+    <div class="why">
+      <div class="why-item reveal"><span class="mono" data-en="Operator">Praktiker</span><p data-en="I run e-commerce businesses myself. I know the problems from the inside.">Ich betreibe selbst E-Commerce-Geschäfte. Ich kenne die Probleme von innen.</p></div>
+      <div class="why-item reveal d1"><span class="mono" data-en="Engineer">Entwickler</span><p data-en="I build the software that solves recurring problems for good.">Ich baue die Software, die wiederkehrende Probleme dauerhaft löst.</p></div>
+      <div class="why-item reveal d2"><span class="mono" data-en="No agency">Keine Agentur</span><p data-en="I bring the knowledge into your company instead of making you dependent.">Ich bringe das Wissen in Ihr Unternehmen, statt Sie abhängig zu machen.</p></div>
+    </div>
+    <div class="sec-cta reveal"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
   </div>
 </section>
 
@@ -772,7 +1046,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <blockquote data-en="<span class='qm'>“</span>I don’t just advise businesses on technology. I build the systems they run on.<span class='qm'>”</span>"><span class="qm">«</span>Ich berate Unternehmen nicht nur zu Technologie. Ich baue die Systeme, mit denen sie arbeiten.<span class="qm">»</span></blockquote>
         <figcaption class="mono"><span>Lars Orlamünde</span><span>Founder &amp; CEO</span></figcaption>
       </figure>
-      <div><a class="btn btn-primary" href="#kontakt"><span data-en="Book a call with me">Gespräch mit mir vereinbaren</span> <span class="arr" aria-hidden="true">→</span></a></div>
+      <div class="sec-cta" style="margin-top:0"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a></div>
     </div>
   </div>
 </section>
@@ -904,6 +1178,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
       </div>
     </div>
     <p class="stack-note" data-en="Engineering and AI &amp; Automation list the technologies my team and I build with. Commerce lists the platforms and systems I know operationally and integrate with.">Entwicklung und KI &amp; Automatisierung beschreiben die Technologien, mit denen ich und mein Team selbst entwickeln. Commerce beschreibt die Plattformen und Systeme, die ich operativ kenne und anbinde.</p>
+    <div class="sec-cta reveal"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
   </div>
 </section>
 
@@ -934,7 +1209,35 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <dl><dt data-en="Format">Form</dt><dd data-en="Software, APIs, automation">Software, APIs, Automatisierung</dd><dt data-en="Scope">Rahmen</dt><dd data-en="Project or ongoing">Projekt oder fortlaufend</dd></dl>
       </article>
     </div>
-    <a class="big-cta" href="#kontakt"><span class="txt" data-en="Let’s work together">Zusammenarbeit starten</span><span class="arr" aria-hidden="true">→</span></a>
+    <div class="sec-cta reveal"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label mono"><i class="sq"></i><span>FAQ</span> <span class="path">/faq</span></div>
+      <h2 class="reveal" data-en="Honest answers<br><span class='dim'>to fair questions.</span>">Ehrliche Antworten<br><span class="dim">auf berechtigte Fragen.</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-items">
+        <details class="reveal"><summary data-en="What does the first call cost?">Was kostet das Erstgespräch?</summary><p data-en="Nothing. 30 minutes, directly with me. Afterwards you decide whether to continue.">Nichts. 30 Minuten, direkt mit mir. Danach entscheiden Sie, ob es weitergeht.</p></details>
+        <details class="reveal"><summary data-en="Are you an agency?">Sind Sie eine Agentur?</summary><p data-en="No. I work with you personally, with my team and my own systems. My goal is for the knowledge to stay in your company instead of making you dependent.">Nein. Ich arbeite persönlich mit Ihnen, mit meinem Team und eigenen Systemen. Mein Ziel ist, dass das Wissen in Ihrem Unternehmen bleibt, statt Sie abhängig zu machen.</p></details>
+        <details class="reveal"><summary data-en="Isn’t it too early for us?">Ist das nicht zu früh für uns?</summary><p data-en="If you are just starting with marketplaces, this is a good moment. Mistakes in account setup and product data are easy to avoid at the start and hard to fix later.">Wenn Sie gerade erst mit Marktplätzen starten, ist das ein guter Zeitpunkt. Fehler im Account-Aufbau und in den Produktdaten lassen sich am Anfang leicht vermeiden und später nur mühsam beheben.</p></details>
+        <details class="reveal"><summary data-en="Who is this not worth it for?">Für wen lohnt es sich nicht?</summary><p data-en="If you only need one small thing, such as a single listing, or are looking for an advertising agency for campaigns. And if nobody on your side has time to take over the knowledge. In that case I will tell you openly.">Wenn Sie nur eine einzelne Kleinigkeit brauchen, etwa ein Listing, oder eine Werbeagentur für Kampagnen suchen. Und wenn bei Ihnen niemand Zeit hat, das Wissen zu übernehmen. Dann sage ich Ihnen das offen.</p></details>
+        <details class="reveal"><summary data-en="What happens to my answers from the check?">Was passiert mit meinen Angaben aus dem Check?</summary><p data-en="They only go to me and are used to prepare our call. No newsletter, no sharing with third parties.">Sie gehen nur an mich und dienen dazu, unser Gespräch vorzubereiten. Kein Newsletter, keine Weitergabe an Dritte.</p></details>
+      </div>
+      <div class="sec-cta reveal"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSING BAND ================= -->
+<section class="cta-band" aria-label="Marktplatz-Check" data-en-aria="Marketplace check">
+  <div class="wrap cta-band-grid">
+    <p class="reveal" data-en="Every month of manual work and open account warnings costs revenue<span class='dim'> you will not get back.</span>">Jeder Monat mit Handarbeit und offenen Account-Warnungen kostet Umsatz,<span class="dim"> den Sie nicht zurückholen.</span></p>
+    <div class="cta-band-act"><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a><span class="mono" style="border:0" data-en="2 minutes · free · no obligation">2 Minuten · kostenlos · unverbindlich</span></div>
   </div>
 </section>
 
@@ -944,29 +1247,28 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     <div class="label mono" style="margin-bottom:28px"><i class="sq"></i><span data-en="Contact">Kontakt</span> <span class="path">/kontakt</span></div>
     <h2 class="reveal" aria-label="Lassen Sie uns etwas Besseres, Effektiveres und Lukrativeres bauen." data-en-aria="Let’s build something better, more effective and more profitable."><span class="cl" aria-hidden="true" data-en="Let’s build<br>something">Lassen Sie uns<br>etwas</span> <span class="cw" aria-hidden="true"><span class="dim rot" id="cword">Besseres</span></span> <span class="cl" aria-hidden="true" data-en="">bauen.</span></h2>
     <div class="contact-grid">
-      <div class="contact-main">
-        <p data-en="Do you have a project, a challenge, or want to make your e-commerce processes more efficient? Let’s talk.">Sie haben ein Projekt, eine Herausforderung oder möchten Ihre E-Commerce-Prozesse effizienter gestalten? Lassen Sie uns sprechen.</p>
-        <form class="form" id="form" novalidate>
-          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name"></div>
-          <div class="field"><label for="f-company" data-en="Company">Unternehmen</label><input id="f-company" name="company" autocomplete="organization"></div>
-          <div class="field"><label for="f-mail" data-en="Email">E-Mail</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
-          <div class="field"><label for="f-topic" data-en="Topic">Thema</label>
-            <select id="f-topic" name="topic"><option value="consulting" data-en="Consulting &amp; Interim">Beratung &amp; Interim</option><option value="operations" data-en="Managed Operations">Laufende Betreuung</option><option value="engineering" data-en="Engineering &amp; Automation">Entwicklung &amp; Automatisierung</option><option value="other" data-en="Something else">Etwas anderes</option></select></div>
-          <div class="field full"><label for="f-msg" data-en="Message">Nachricht</label><textarea id="f-msg" name="message" placeholder="Worum geht es?" data-en-ph="What is it about?"></textarea></div>
-          <div class="full"><button class="btn btn-primary" type="submit"><span data-en="Send request">Anfrage senden</span> <span class="arr" aria-hidden="true">→</span></button></div>
-          <p class="form-note" id="formNote"></p>
-        </form>
+      <div class="contact-main contact-alt">
+        <p data-en="Prefer to get in touch directly? Write or call me. Or take the check first, then our call is already prepared.">Lieber direkt? Schreiben Sie mir oder rufen Sie an. Oder machen Sie vorher den Check, dann ist unser Gespräch schon vorbereitet.</p>
+        <div><a class="btn btn-primary" href="#check"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span class="arr" aria-hidden="true">→</span></a></div>
       </div>
+      <div class="contact-side"><span class="mono contact-side-label" data-en="Direct">Direkt</span>
       <dl class="contact-card">
         <div><dt data-en="Company">Firma</dt><dd>TradeX International AG</dd><span></span></div>
         <div><dt data-en="Email">E-Mail</dt><dd><a href="mailto:lars@tradexag.ch" id="mail">lars@tradexag.ch</a></dd><button class="copy" id="copyMail" type="button" data-en="Copy">Kopieren</button></div>
         <div><dt data-en="Phone">Telefon</dt><dd><a href="tel:+41772747579">+41 77 274 75 79</a></dd><span></span></div>
-        <div><dt>Domain</dt><dd>tradexag.ch</dd><span></span></div>
+        <div><dt data-en="Location">Standort</dt><dd data-en="Schindellegi, Switzerland">Schindellegi, Schweiz</dd><span></span></div>
       </dl>
+      <ol class="next-steps">
+        <li><span class="mono">01</span><span data-en="You take the check or write to me.">Sie machen den Check oder schreiben mir.</span></li>
+        <li><span class="mono">02</span><span data-en="I read it personally and get back to you with times.">Ich lese es persönlich und melde mich mit Terminvorschlägen.</span></li>
+        <li><span class="mono">03</span><span data-en="We talk for 30 minutes and decide together whether it fits.">Wir sprechen 30 Minuten und entscheiden gemeinsam, ob es passt.</span></li>
+      </ol>
+      </div>
     </div>
   </div>
 </section>
 </main>
+<a class="sticky-cta" id="stickyCta" href="#check" aria-hidden="true" tabindex="-1"><span data-en="Start the marketplace check">Marktplatz-Check starten</span> <span aria-hidden="true">→</span></a>
 
 <footer class="footer">
   <div class="wrap mono">
@@ -1089,7 +1391,7 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         }
       });
     }, {rootMargin:'-45% 0px -50% 0px'});
-    ['expertise','founder','engineering','stack','zusammenarbeit','kontakt','top'].forEach(function(id){ var s = document.getElementById(id); if (s) navIO.observe(s); });
+    ['ausgangslage','check','expertise','vorgehen','founder','engineering','stack','zusammenarbeit','faq','kontakt','top'].forEach(function(id){ var s = document.getElementById(id); if (s) navIO.observe(s); });
   }
 
   /* hero terminal */
@@ -1216,18 +1518,6 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     form.hidden = !form.hidden;
     openBtn.setAttribute('aria-expanded', !form.hidden);
     if (!form.hidden) document.getElementById('f-name').focus();
-  });
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
-    var topic = document.getElementById('f-topic');
-    var body = v('f-msg') + '\n\n--\n' + v('f-name')
-      + (v('f-company') ? '\n' + t('lblCompany') + ': ' + v('f-company') : '')
-      + (v('f-mail') ? '\n' + t('lblMail') + ': ' + v('f-mail') : '')
-      + '\n' + t('lblTopic') + ': ' + topic.options[topic.selectedIndex].text;
-    note.classList.add('show');
-    note.textContent = t('sent');
-    location.href = 'mailto:lars@tradexag.ch?subject=' + encodeURIComponent(t('subj')) + '&body=' + encodeURIComponent(body);
   });
   var copyBtn = document.getElementById('copyMail');
   copyBtn.addEventListener('click', function(){
@@ -1370,6 +1660,24 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
 })();
 </script>
 <script>
+/* conversion helpers: model buttons preselect the topic; a sticky call to action on small screens between hero and contact */
+(function(){
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('[data-topic]'); if (!a) return;
+    var sel = document.getElementById('f-topic'); if (sel) sel.value = a.getAttribute('data-topic');
+    setTimeout(function(){ var n = document.getElementById('f-name'); if (n) n.focus({preventScroll:true}); }, 600);
+  });
+  var cta = document.getElementById('stickyCta'), hero = document.getElementById('top'), contact = document.getElementById('kontakt'), check = document.getElementById('check');
+  if (!cta || !('IntersectionObserver' in window)) return;
+  var heroIn = true, contactIn = false;
+  function upd(){ var on = !heroIn && !contactIn; cta.classList.toggle('on', on); cta.setAttribute('aria-hidden', !on); cta.tabIndex = on ? 0 : -1; }
+  new IntersectionObserver(function(en){ en.forEach(function(x){ if (x.target === hero) heroIn = x.isIntersecting; else contactIn = x.isIntersecting; }); upd(); }, {threshold:0}).observe(hero);
+  var seen = {};
+  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ seen[x.target.id] = x.isIntersecting; }); contactIn = !!(seen.kontakt || seen.check); upd(); }, {threshold:0});
+  io.observe(contact); if (check) io.observe(check);
+})();
+</script>
+<script>
 /* terminal box: flash the photo briefly once the box is in view, then wipe to the console */
 (function(){
   var ph = document.getElementById('termPhoto'); if (!ph) return;
@@ -1384,22 +1692,6 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(en, o){ en.forEach(function(x){ if (x.isIntersecting){ seen = true; o.disconnect(); go(); } }); }, {threshold:0.4}).observe(ph);
   } else { seen = true; go(); }
-})();
-</script>
-<script>
-/* every "contact" button lands directly on the open form */
-(function(){
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href="#kontakt"]'); if (!a) return;
-    var f = document.getElementById('form'), b = document.getElementById('openForm'), g = document.querySelector('.contact-grid');
-    if (!f || !g) return;
-    e.preventDefault();
-    if (f.hidden){ f.hidden = false; if (b){ b.setAttribute('aria-expanded', true); b.parentNode.hidden = true; } }
-    g.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
-    if (history.replaceState) history.replaceState(null, '', '#kontakt');
-    if (matchMedia('(pointer: fine)').matches) setTimeout(function(){ var n = document.getElementById('f-name'); if (n) n.focus({preventScroll: true}); }, reduce ? 0 : 700);
-  });
 })();
 </script>
 <script>
@@ -1448,6 +1740,85 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     setTimeout(tick, wait);
   }
   setTimeout(tick, 350);
+})();
+</script>
+<script>
+/* marketplace check: click questions -> result -> preferred time -> contact details -> mailto */
+(function(){
+  var quiz = document.getElementById('quiz'); if (!quiz) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var steps = quiz.querySelectorAll('.q-step'), back = document.getElementById('qBack');
+  var bar = document.getElementById('qBar'), posN = document.getElementById('qPosN'), pos = document.getElementById('qPos');
+  var ans = {}, cur = 0, hist = [];
+  function en(){ return document.documentElement.lang === 'en'; }
+  function show(n, push){
+    if (push !== false && n !== cur) hist.push(cur);
+    cur = n;
+    steps.forEach(function(s){ s.hidden = +s.getAttribute('data-step') !== n; });
+    back.hidden = n === 0 || n === 7;
+    pos.style.visibility = n < 4 ? 'visible' : 'hidden';
+    posN.textContent = Math.min(n + 1, 4);
+    bar.style.width = (Math.min(n, 7) / 7 * 100) + '%';
+    if (n === 4) result();
+    var h = quiz.querySelector('.q-step[data-step="' + n + '"] h3, .q-step[data-step="' + n + '"] .q-count');
+    var r = quiz.getBoundingClientRect();
+    if (push !== false && (r.top < 60 || r.top > innerHeight * 0.5)) quiz.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'start'});
+  }
+  function result(){
+    var gaps = {};
+    quiz.querySelectorAll('.q-opts .q-opt[aria-pressed="true"]').forEach(function(b){ var g = b.getAttribute('data-gap'); if (g) gaps[g] = 1; });
+    var n = 0;
+    document.querySelectorAll('#qGaps li').forEach(function(li){ var on = !!gaps[li.getAttribute('data-gap')]; li.hidden = !on; if (on) n++; });
+    var num = document.getElementById('qNum'); num.textContent = n; num.classList.toggle('has', n > 0);
+    document.getElementById('qOfferGaps').hidden = n === 0;
+    document.getElementById('qOfferNone').hidden = n !== 0;
+  }
+  quiz.addEventListener('click', function(e){
+    var b = e.target.closest('.q-opt');
+    if (b){
+      var group = b.parentNode, q = group.getAttribute('data-q');
+      group.querySelectorAll('.q-opt').forEach(function(x){ x.setAttribute('aria-pressed', x === b); });
+      ans[q] = b;
+      if (q === 'week' || q === 'time'){ document.getElementById('qSlotNext').disabled = !(ans.week && ans.time); return; }
+      setTimeout(function(){ show(cur + 1); }, reduce ? 0 : 220);
+      return;
+    }
+    var nx = e.target.closest('.q-next');
+    if (nx && !nx.disabled){
+      var go = +nx.getAttribute('data-go'); show(go);
+      if (go === 6 && matchMedia('(pointer: fine)').matches) setTimeout(function(){ document.getElementById('f-name').focus({preventScroll:true}); }, 50);
+    }
+  });
+  back.addEventListener('click', function(){ if (hist.length) show(hist.pop(), false); });
+  var form = document.getElementById('form'), note = document.getElementById('formNote');
+  form.addEventListener('input', function(){ note.classList.remove('show'); note.textContent = ''; });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = function(id){ return (document.getElementById(id).value || '').trim(); };
+    var E = en();
+    if (!v('f-name') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('f-mail'))){
+      note.classList.add('show');
+      note.textContent = E ? 'Please enter your name and a valid email address.' : 'Bitte Name und eine gültige E-Mail-Adresse angeben.';
+      return;
+    }
+    var txt = function(b){ return b ? b.textContent.trim() : '-'; };
+    var qs = quiz.querySelectorAll('.q-step h3');
+    var lines = [];
+    for (var i = 1; i <= 4; i++) lines.push(qs[i - 1].textContent.trim() + '\n  ' + txt(ans['q' + i]));
+    var gl = []; document.querySelectorAll('#qGaps li').forEach(function(li){ if (!li.hidden) gl.push('- ' + li.textContent.trim()); });
+    var body = (E ? 'Marketplace check' : 'Marktplatz-Check') + '\n\n' + lines.join('\n\n')
+      + '\n\n' + (E ? 'Open points' : 'Offene Punkte') + ': ' + gl.length + (gl.length ? '\n' + gl.join('\n') : '')
+      + '\n\n' + (E ? 'Preferred time' : 'Wunschtermin') + ': ' + txt(ans.week) + ', ' + txt(ans.time)
+      + '\n\n--\n' + v('f-name')
+      + (v('f-company') ? '\n' + (E ? 'Company' : 'Unternehmen') + ': ' + v('f-company') : '')
+      + '\n' + (E ? 'Email' : 'E-Mail') + ': ' + v('f-mail')
+      + (v('f-phone') ? '\n' + (E ? 'Phone' : 'Telefon') + ': ' + v('f-phone') : '');
+    var subj = (E ? 'Marketplace check: call request from ' : 'Marktplatz-Check: Gesprächsanfrage von ') + v('f-name');
+    note.classList.remove('show'); note.textContent = '';
+    show(7);
+    location.href = 'mailto:lars@tradexag.ch?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+  });
+  show(0, false);
 })();
 </script>
 </body></html>
