@@ -738,6 +738,23 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
   .q-step .form{grid-template-columns:1fr}
   .proof div{padding-right:14px;margin-right:14px}
 }
+
+/* ---------- MIT certificate flip (2026-10-30) ---------- */
+.proof-mit{all:unset;display:block;cursor:pointer}
+.proof-mit:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.proof-mit dd{transition:color .2s}
+.proof-mit .proof-see{color:var(--accent)}
+.proof-mit:hover dd,.proof-mit[aria-expanded="true"] dd{color:var(--ink)}
+.flip{perspective:1800px}
+.flip-inner{position:relative;transition:transform .8s var(--ease);transform-style:preserve-3d}
+.flip.on .flip-inner{transform:rotateY(180deg)}
+.flip .terminal,.cert-back{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flip .terminal{transition:height .8s var(--ease)}
+.cert-back{position:absolute;top:0;left:0;right:0;transform:rotateY(180deg);background:var(--ink);color:#E9EAEB;border-radius:4px;font-family:var(--font-mono);font-size:13px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(17,17,17,.45)}
+.cert-back img{display:block;width:100%;height:auto;aspect-ratio:632 / 485;background:#fff}
+.cert-close{all:unset;cursor:pointer;color:#E9EAEB;font:inherit;font-size:11px;letter-spacing:.04em}
+.cert-close:hover,.cert-close:focus-visible{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.flip-inner,.flip .terminal{transition:none}}
 </style>
 </head>
 <body>
@@ -814,11 +831,13 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
         <dl class="proof">
           <div><dt data-en="Since 2018">Seit 2018</dt><dd data-en="in e-commerce">im E-Commerce</dd></div>
           <div><dt data-en="9 brands">9 Marken</dt><dd data-en="I manage">betreue ich</dd></div>
-          <div><dt>MIT</dt><dd data-en="AI products, certified">KI-Produkte, zertifiziert</dd></div>
+          <div><button type="button" class="proof-mit" id="mitBtn" aria-controls="heroFlip" aria-expanded="false"><dt>MIT</dt><dd><span data-en="AI products, certified">KI-Produkte, zertifiziert</span> <span class="proof-see" aria-hidden="true">↗</span></dd></button></div>
         </dl>
       </div>
 
       <div class="terminal-col">
+        <div class="flip" id="heroFlip">
+        <div class="flip-inner">
         <div class="terminal" role="img" aria-label="Animiertes Terminal: ein Listing-Abgleich läuft durch Daten, Automatisierung und Ausführung, mit menschlicher Freigabe vor der Übermittlung." data-en-aria="Animated terminal: a listing sync runs through data, automation and execution, with human approval before submission.">
           <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>tradex — console</span><span data-en="example">beispiel</span></div>
           <div class="term-body" id="termBody"></div>
@@ -827,6 +846,12 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
             <span class="node" data-stage="1"><i></i><span data-en="Automation">Automatisierung</span></span><span class="sep">→</span>
             <span class="node" data-stage="2"><i></i><span data-en="Execution">Ausführung</span></span>
           </div>
+        </div>
+        <div class="cert-back" aria-hidden="true">
+          <div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span data-en="tradex — certificate">tradex — zertifikat</span><button type="button" class="cert-close" id="certClose" data-en="back ×">zurück ×</button></div>
+          <img src="/assets/mit-zertifikat.png" width="632" height="485" alt="MIT xPRO Zertifikat: Designing and Building AI Products and Services, Lars Orlamünde, Februar 2024" data-en-alt="MIT xPRO certificate: Designing and Building AI Products and Services, Lars Orlamünde, February 2024" loading="lazy" decoding="async">
+        </div>
+        </div>
         </div>
         <p class="term-note mono" data-en="Illustrative run · Data → Automation → Execution">Illustrativer Ablauf · Daten → Automatisierung → Ausführung</p>
       </div>
@@ -1821,6 +1846,37 @@ html[lang="de"] .big-cta{font-size:clamp(28px,5vw,76px)}
     location.href = 'mailto:lars@tradexag.ch?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
   });
   show(0, false);
+})();
+</script>
+<script>
+(function(){
+  var flip = document.getElementById('heroFlip'), btn = document.getElementById('mitBtn'), close = document.getElementById('certClose');
+  if (!flip || !btn) return;
+  var front = flip.querySelector('.terminal'), back = flip.querySelector('.cert-back'), img = back.querySelector('img');
+  img.loading = 'eager';
+  function fit(){ if (flip.classList.contains('on')) front.style.height = back.offsetHeight + 'px'; }
+  function set(on){
+    if (on === flip.classList.contains('on')) return;
+    front.style.height = front.offsetHeight + 'px';
+    front.offsetHeight;
+    flip.classList.toggle('on', on);
+    btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    back.setAttribute('aria-hidden', on ? 'false' : 'true');
+    front.setAttribute('aria-hidden', on ? 'true' : 'false');
+    if (on) {
+      fit();
+      var r = flip.getBoundingClientRect();
+      if (r.top < 0 || r.top + back.offsetHeight > innerHeight) flip.scrollIntoView({behavior:'smooth', block:'center'});
+    } else {
+      front.style.height = front.scrollHeight + 'px';
+      setTimeout(function(){ if (!flip.classList.contains('on')) front.style.height = ''; }, 850);
+    }
+  }
+  btn.addEventListener('click', function(){ set(!flip.classList.contains('on')); });
+  close.addEventListener('click', function(){ set(false); btn.focus({preventScroll:true}); });
+  img.addEventListener('click', function(){ set(false); });
+  addEventListener('resize', fit);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') set(false); });
 })();
 </script>
 </body></html>
